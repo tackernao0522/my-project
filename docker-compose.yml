@@ -1,14 +1,22 @@
 version: '3'
 
 services:
-  web:
-    container_name: web
-    build: ./docker
-    ports:
-      - 80:80
-    privileged: true
+  php:
+    container_name: php
+    build: ./docker/php
     volumes:
-      - ./server:/var/www/html
+    - ./server:/var/www
+
+  nginx:
+    image: nginx
+    container_name: nginx
+    ports:
+    - 80:80
+    volumes:
+    - ./server:/var/www
+    - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+    - php
 
   db:
     image: mysql:5.7
