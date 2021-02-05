@@ -1,0 +1,15 @@
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+//Common
+@import 'common/extend';
+@import 'common/fonts.scss';
+@import 'common/minxi';
+@import 'common/variables';
+@import 'common/global.scss';
+
+// layouts
+@import 'layouts/main.scss';
+
+// Responsive
+@import 'layouts/responsive.scss';
