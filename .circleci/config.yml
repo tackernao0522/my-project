@@ -9,5 +9,5 @@ jobs:
       - run: composer install -n --prefer-dist --working-dir=./server/
       - run: cd server/; npm ci
       - run: cd server/; npm run dev
-      - run: cd server/; php artisan migrate --force
-      - run: cd server/; php artisan db:seed --force
+      # - run: cd server/; php artisan migrate --force
+      # - run: cd server/; php artisan db:seed --force
