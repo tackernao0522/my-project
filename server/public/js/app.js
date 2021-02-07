@@ -37393,15 +37393,27 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
+/***/ "./resources/sass/todo.scss":
+/*!**********************************!*\
+  !*** ./resources/sass/todo.scss ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ 0:
-/*!***************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/style.scss ***!
-  \***************************************************************/
+/*!******************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/sass/style.scss ./resources/sass/todo.scss ***!
+  \******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! /var/www/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /var/www/resources/sass/style.scss */"./resources/sass/style.scss");
+__webpack_require__(/*! /var/www/resources/sass/style.scss */"./resources/sass/style.scss");
+module.exports = __webpack_require__(/*! /var/www/resources/sass/todo.scss */"./resources/sass/todo.scss");
 
 
 /***/ })

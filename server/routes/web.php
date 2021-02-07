@@ -18,7 +18,7 @@ Route::get('/', function () {
 })->name('top');
 
 // todo division
-Route::get('/folders/{id}tasks', 'TaskController@index')->name('tasks.index');
+Route::get('/folders/{id}/tasks', 'TaskController@index')->name('tasks.index');
 
 Auth::routes();
 
