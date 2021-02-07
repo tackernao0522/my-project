@@ -1,26 +1,110 @@
-+--------+----------+------------------------+------------------+------------------------------------------------------------------------+------------+
-| Domain | Method   | URI                    | Name             | Action                                                                 | Middleware |
-+--------+----------+------------------------+------------------+------------------------------------------------------------------------+------------+
-|        | GET|HEAD | /                      | top              | Closure                                                                | web        |
-|        | GET|HEAD | api/user               |                  | Closure                                                                | api        |
-|        |          |                        |                  |                                                                        | auth:api   |
-|        | GET|HEAD | home                   | home             | App\Http\Controllers\HomeController@index                              | web        |
-|        |          |                        |                  |                                                                        | auth       |
-|        | GET|HEAD | login                  | login            | App\Http\Controllers\Auth\LoginController@showLoginForm                | web        |
-|        |          |                        |                  |                                                                        | guest      |
-|        | POST     | login                  |                  | App\Http\Controllers\Auth\LoginController@login                        | web        |
-|        |          |                        |                  |                                                                        | guest      |
-|        | POST     | logout                 | logout           | App\Http\Controllers\Auth\LoginController@logout                       | web        |
-|        | GET|HEAD | password/confirm       | password.confirm | App\Http\Controllers\Auth\ConfirmPasswordController@showConfirmForm    | web        |
-|        |          |                        |                  |                                                                        | auth       |
-|        | POST     | password/confirm       |                  | App\Http\Controllers\Auth\ConfirmPasswordController@confirm            | web        |
-|        |          |                        |                  |                                                                        | auth       |
-|        | POST     | password/email         | password.email   | App\Http\Controllers\Auth\ForgotPasswordController@sendResetLinkEmail  | web        |
-|        | GET|HEAD | password/reset         | password.request | App\Http\Controllers\Auth\ForgotPasswordController@showLinkRequestForm | web        |
-|        | POST     | password/reset         | password.update  | App\Http\Controllers\Auth\ResetPasswordController@reset                | web        |
-|        | GET|HEAD | password/reset/{token} | password.reset   | App\Http\Controllers\Auth\ResetPasswordController@showResetForm        | web        |
-|        | GET|HEAD | register               | register         | App\Http\Controllers\Auth\RegisterController@showRegistrationForm      | web        |
-|        |          |                        |                  |                                                                        | guest      |
-|        | POST     | register               |                  | App\Http\Controllers\Auth\RegisterController@register                  | web        |
-|        |          |                        |                  |                                                                        | guest      |
-+--------+----------+------------------------+------------------+------------------------------------------------------------------------+------------+
++--------+----------+-------------------------------+-----------------------+------------------------------------------------------------------------+---------------------------------------------------------+
+| Domain | Method   | URI                           | Name                  | Action                                                                 | Middleware                                              |
++--------+----------+-------------------------------+-----------------------+------------------------------------------------------------------------+---------------------------------------------------------+
+|        | GET|HEAD | /                             | top                   | Closure                                                                | App\Http\Middleware\EncryptCookies                      |
+|        |          |                               |                       |                                                                        | Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse |
+|        |          |                               |                       |                                                                        | Illuminate\Session\Middleware\StartSession              |
+|        |          |                               |                       |                                                                        | Illuminate\View\Middleware\ShareErrorsFromSession       |
+|        |          |                               |                       |                                                                        | App\Http\Middleware\VerifyCsrfToken                     |
+|        |          |                               |                       |                                                                        | Illuminate\Routing\Middleware\SubstituteBindings        |
+|        | GET|HEAD | _debugbar/assets/javascript   | debugbar.assets.js    | Barryvdh\Debugbar\Controllers\AssetController@js                       | Barryvdh\Debugbar\Middleware\DebugbarEnabled            |
+|        |          |                               |                       |                                                                        | Closure                                                 |
+|        | GET|HEAD | _debugbar/assets/stylesheets  | debugbar.assets.css   | Barryvdh\Debugbar\Controllers\AssetController@css                      | Barryvdh\Debugbar\Middleware\DebugbarEnabled            |
+|        |          |                               |                       |                                                                        | Closure                                                 |
+|        | DELETE   | _debugbar/cache/{key}/{tags?} | debugbar.cache.delete | Barryvdh\Debugbar\Controllers\CacheController@delete                   | Barryvdh\Debugbar\Middleware\DebugbarEnabled            |
+|        |          |                               |                       |                                                                        | Closure                                                 |
+|        | GET|HEAD | _debugbar/clockwork/{id}      | debugbar.clockwork    | Barryvdh\Debugbar\Controllers\OpenHandlerController@clockwork          | Barryvdh\Debugbar\Middleware\DebugbarEnabled            |
+|        |          |                               |                       |                                                                        | Closure                                                 |
+|        | GET|HEAD | _debugbar/open                | debugbar.openhandler  | Barryvdh\Debugbar\Controllers\OpenHandlerController@handle             | Barryvdh\Debugbar\Middleware\DebugbarEnabled            |
+|        |          |                               |                       |                                                                        | Closure                                                 |
+|        | GET|HEAD | _debugbar/telescope/{id}      | debugbar.telescope    | Barryvdh\Debugbar\Controllers\TelescopeController@show                 | Barryvdh\Debugbar\Middleware\DebugbarEnabled            |
+|        |          |                               |                       |                                                                        | Closure                                                 |
+|        | GET|HEAD | api/user                      |                       | Closure                                                                | App\Http\Middleware\Authenticate:api                    |
+|        |          |                               |                       |                                                                        | Illuminate\Routing\Middleware\ThrottleRequests:60,1     |
+|        |          |                               |                       |                                                                        | Illuminate\Routing\Middleware\SubstituteBindings        |
+|        | GET|HEAD | folders/{id}tasks             | tasks.index           | App\Http\Controllers\TaskController@index                              | App\Http\Middleware\EncryptCookies                      |
+|        |          |                               |                       |                                                                        | Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse |
+|        |          |                               |                       |                                                                        | Illuminate\Session\Middleware\StartSession              |
+|        |          |                               |                       |                                                                        | Illuminate\View\Middleware\ShareErrorsFromSession       |
+|        |          |                               |                       |                                                                        | App\Http\Middleware\VerifyCsrfToken                     |
+|        |          |                               |                       |                                                                        | Illuminate\Routing\Middleware\SubstituteBindings        |
+|        | GET|HEAD | home                          | home                  | App\Http\Controllers\HomeController@index                              | App\Http\Middleware\EncryptCookies                      |
+|        |          |                               |                       |                                                                        | Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse |
+|        |          |                               |                       |                                                                        | Illuminate\Session\Middleware\StartSession              |
+|        |          |                               |                       |                                                                        | Illuminate\View\Middleware\ShareErrorsFromSession       |
+|        |          |                               |                       |                                                                        | App\Http\Middleware\VerifyCsrfToken                     |
+|        |          |                               |                       |                                                                        | App\Http\Middleware\Authenticate                        |
+|        |          |                               |                       |                                                                        | Illuminate\Routing\Middleware\SubstituteBindings        |
+|        | POST     | login                         |                       | App\Http\Controllers\Auth\LoginController@login                        | App\Http\Middleware\EncryptCookies                      |
+|        |          |                               |                       |                                                                        | Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse |
+|        |          |                               |                       |                                                                        | Illuminate\Session\Middleware\StartSession              |
+|        |          |                               |                       |                                                                        | Illuminate\View\Middleware\ShareErrorsFromSession       |
+|        |          |                               |                       |                                                                        | App\Http\Middleware\VerifyCsrfToken                     |
+|        |          |                               |                       |                                                                        | Illuminate\Routing\Middleware\SubstituteBindings        |
+|        |          |                               |                       |                                                                        | App\Http\Middleware\RedirectIfAuthenticated             |
+|        | GET|HEAD | login                         | login                 | App\Http\Controllers\Auth\LoginController@showLoginForm                | App\Http\Middleware\EncryptCookies                      |
+|        |          |                               |                       |                                                                        | Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse |
+|        |          |                               |                       |                                                                        | Illuminate\Session\Middleware\StartSession              |
+|        |          |                               |                       |                                                                        | Illuminate\View\Middleware\ShareErrorsFromSession       |
+|        |          |                               |                       |                                                                        | App\Http\Middleware\VerifyCsrfToken                     |
+|        |          |                               |                       |                                                                        | Illuminate\Routing\Middleware\SubstituteBindings        |
+|        |          |                               |                       |                                                                        | App\Http\Middleware\RedirectIfAuthenticated             |
+|        | POST     | logout                        | logout                | App\Http\Controllers\Auth\LoginController@logout                       | App\Http\Middleware\EncryptCookies                      |
+|        |          |                               |                       |                                                                        | Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse |
+|        |          |                               |                       |                                                                        | Illuminate\Session\Middleware\StartSession              |
+|        |          |                               |                       |                                                                        | Illuminate\View\Middleware\ShareErrorsFromSession       |
+|        |          |                               |                       |                                                                        | App\Http\Middleware\VerifyCsrfToken                     |
+|        |          |                               |                       |                                                                        | Illuminate\Routing\Middleware\SubstituteBindings        |
+|        | GET|HEAD | password/confirm              | password.confirm      | App\Http\Controllers\Auth\ConfirmPasswordController@showConfirmForm    | App\Http\Middleware\EncryptCookies                      |
+|        |          |                               |                       |                                                                        | Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse |
+|        |          |                               |                       |                                                                        | Illuminate\Session\Middleware\StartSession              |
+|        |          |                               |                       |                                                                        | Illuminate\View\Middleware\ShareErrorsFromSession       |
+|        |          |                               |                       |                                                                        | App\Http\Middleware\VerifyCsrfToken                     |
+|        |          |                               |                       |                                                                        | App\Http\Middleware\Authenticate                        |
+|        |          |                               |                       |                                                                        | Illuminate\Routing\Middleware\SubstituteBindings        |
+|        | POST     | password/confirm              |                       | App\Http\Controllers\Auth\ConfirmPasswordController@confirm            | App\Http\Middleware\EncryptCookies                      |
+|        |          |                               |                       |                                                                        | Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse |
+|        |          |                               |                       |                                                                        | Illuminate\Session\Middleware\StartSession              |
+|        |          |                               |                       |                                                                        | Illuminate\View\Middleware\ShareErrorsFromSession       |
+|        |          |                               |                       |                                                                        | App\Http\Middleware\VerifyCsrfToken                     |
+|        |          |                               |                       |                                                                        | App\Http\Middleware\Authenticate                        |
+|        |          |                               |                       |                                                                        | Illuminate\Routing\Middleware\SubstituteBindings        |
+|        | POST     | password/email                | password.email        | App\Http\Controllers\Auth\ForgotPasswordController@sendResetLinkEmail  | App\Http\Middleware\EncryptCookies                      |
+|        |          |                               |                       |                                                                        | Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse |
+|        |          |                               |                       |                                                                        | Illuminate\Session\Middleware\StartSession              |
+|        |          |                               |                       |                                                                        | Illuminate\View\Middleware\ShareErrorsFromSession       |
+|        |          |                               |                       |                                                                        | App\Http\Middleware\VerifyCsrfToken                     |
+|        |          |                               |                       |                                                                        | Illuminate\Routing\Middleware\SubstituteBindings        |
+|        | GET|HEAD | password/reset                | password.request      | App\Http\Controllers\Auth\ForgotPasswordController@showLinkRequestForm | App\Http\Middleware\EncryptCookies                      |
+|        |          |                               |                       |                                                                        | Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse |
+|        |          |                               |                       |                                                                        | Illuminate\Session\Middleware\StartSession              |
+|        |          |                               |                       |                                                                        | Illuminate\View\Middleware\ShareErrorsFromSession       |
+|        |          |                               |                       |                                                                        | App\Http\Middleware\VerifyCsrfToken                     |
+|        |          |                               |                       |                                                                        | Illuminate\Routing\Middleware\SubstituteBindings        |
+|        | POST     | password/reset                | password.update       | App\Http\Controllers\Auth\ResetPasswordController@reset                | App\Http\Middleware\EncryptCookies                      |
+|        |          |                               |                       |                                                                        | Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse |
+|        |          |                               |                       |                                                                        | Illuminate\Session\Middleware\StartSession              |
+|        |          |                               |                       |                                                                        | Illuminate\View\Middleware\ShareErrorsFromSession       |
+|        |          |                               |                       |                                                                        | App\Http\Middleware\VerifyCsrfToken                     |
+|        |          |                               |                       |                                                                        | Illuminate\Routing\Middleware\SubstituteBindings        |
+|        | GET|HEAD | password/reset/{token}        | password.reset        | App\Http\Controllers\Auth\ResetPasswordController@showResetForm        | App\Http\Middleware\EncryptCookies                      |
+|        |          |                               |                       |                                                                        | Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse |
+|        |          |                               |                       |                                                                        | Illuminate\Session\Middleware\StartSession              |
+|        |          |                               |                       |                                                                        | Illuminate\View\Middleware\ShareErrorsFromSession       |
+|        |          |                               |                       |                                                                        | App\Http\Middleware\VerifyCsrfToken                     |
+|        |          |                               |                       |                                                                        | Illuminate\Routing\Middleware\SubstituteBindings        |
+|        | GET|HEAD | register                      | register              | App\Http\Controllers\Auth\RegisterController@showRegistrationForm      | App\Http\Middleware\EncryptCookies                      |
+|        |          |                               |                       |                                                                        | Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse |
+|        |          |                               |                       |                                                                        | Illuminate\Session\Middleware\StartSession              |
+|        |          |                               |                       |                                                                        | Illuminate\View\Middleware\ShareErrorsFromSession       |
+|        |          |                               |                       |                                                                        | App\Http\Middleware\VerifyCsrfToken                     |
+|        |          |                               |                       |                                                                        | Illuminate\Routing\Middleware\SubstituteBindings        |
+|        |          |                               |                       |                                                                        | App\Http\Middleware\RedirectIfAuthenticated             |
+|        | POST     | register                      |                       | App\Http\Controllers\Auth\RegisterController@register                  | App\Http\Middleware\EncryptCookies                      |
+|        |          |                               |                       |                                                                        | Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse |
+|        |          |                               |                       |                                                                        | Illuminate\Session\Middleware\StartSession              |
+|        |          |                               |                       |                                                                        | Illuminate\View\Middleware\ShareErrorsFromSession       |
+|        |          |                               |                       |                                                                        | App\Http\Middleware\VerifyCsrfToken                     |
+|        |          |                               |                       |                                                                        | Illuminate\Routing\Middleware\SubstituteBindings        |
+|        |          |                               |                       |                                                                        | App\Http\Middleware\RedirectIfAuthenticated             |
++--------+----------+-------------------------------+-----------------------+------------------------------------------------------------------------+---------------------------------------------------------+
