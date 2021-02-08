@@ -11,7 +11,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->delete();
+        DB::table('users')->truncate();
         $user_seeds = [
             [
                 'name' => 'test01',
