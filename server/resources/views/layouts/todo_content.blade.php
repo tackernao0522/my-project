@@ -19,6 +19,8 @@
 
   <!-- Styles -->
   <link href="{{ asset('css/todo.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" href="https://npmcdn.com/flatpickr/dist/themes/material_blue.css">
 
   <link rel="shortcut icon" href="/images/tp.ico">
 </head>
@@ -29,7 +31,9 @@
       <a class="my-navbar-brand" href="/folders/1/tasks">ToDo App</a>
     </nav>
   </header>
-  @yield('content')
+  <main>
+    @yield('content')
+  </main>
 </body>
-
+  @yield('scripts')
 </html>
