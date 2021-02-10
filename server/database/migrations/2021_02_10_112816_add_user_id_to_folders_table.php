@@ -27,8 +27,10 @@ class AddUserIdToFoldersTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::table('folders', function (Blueprint $table) {
-            $table->dropColumn('user_id');
+            $table->drop('folders_user_id_foreign');
         });
+        Schema::enableForeignKeyConstraints();
     }
 }
