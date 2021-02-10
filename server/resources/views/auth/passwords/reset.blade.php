@@ -11,7 +11,7 @@
         <div class="container">
             <div class="signin-content">
                 <div class="signin-image">
-                    <figure><a href="{{ route('top') }}"><img src="/images/signin-image.jpg" alt="sing up image"></a></figure>
+                    <figure><a href="{{ route('home') }}"><img src="/images/signin-image.jpg" alt="sing up image"></a></figure>
                 </div>
 
                 <div class="new-password" style="padding-top: 70px;">
