@@ -41,7 +41,7 @@
                     </form>
                 </div>
                 <div class="signup-image">
-                    <figure><a href="{{ route('top') }}"><img src="images/signup-image.jpg" alt="sing up image"></a></figure>
+                    <figure><a href="{{ route('home') }}"><img src="images/signup-image.jpg" alt="sing up image"></a></figure>
                     <a href="{{ route('login') }}" class="signup-image-link">アカウントをお持ちの方は</a>
                 </div>
             </div>

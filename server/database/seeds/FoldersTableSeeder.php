@@ -13,21 +13,26 @@ class FoldersTableSeeder extends Seeder
     public function run()
     {
         DB::table('folders')->delete();
+        $user = DB::table('users')->first();
+
         $folder_seeds = [
             [
                 'id' => 1,
+                'user_id' => $user->id,
                 'title' => 'プライベート',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
                 'id' => 2,
+                'user_id' => $user->id,
                 'title' => '仕事',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
                 'id' => 3,
+                'user_id' => $user->id,
                 'title' => '旅行',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
