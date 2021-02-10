@@ -30,6 +30,11 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function folders()
+    {
+        return $this->hasMany('App\Models\Folder');
+    }
+
     /**
      * The attributes that should be cast to native types.
      *

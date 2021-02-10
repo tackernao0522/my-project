@@ -9,6 +9,18 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('todo_top');
+        $user = Auth::user();
+
+        $folder = $user->folders()->first();
+
+        // まだひとつもフォルダを作っていなくればTodo_Topページをレスポンス
+        if (is_null($folder)) {
+            return view('todo_top');
+        }
+
+        // フォルダがあればそのフォルダのタスク一覧にリダイレクト
+        return redirect()->route('tasks.index', [
+            'id' => $folder->id,
+        ]);
     }
 }
