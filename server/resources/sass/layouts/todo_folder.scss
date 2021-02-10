@@ -20,13 +20,15 @@ body {
   border-radius: 100px;
 }
 
+
 .my-navbar-brand {
   font-size: 18px;
 }
 
 .my-navbar-brand,
 .my-navbar-item {
-  padding-left: 4rem;
+  padding-left: 3px;
+  padding-right: 4px;
   color: #333;
 }
 

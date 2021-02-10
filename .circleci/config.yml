@@ -39,7 +39,7 @@ jobs:
             dockerize -wait tcp://localhost:3306 -timeout 1m
       - run: cd server/; php artisan migrate
       - run: cd server/; php artisan db:seed
-      - run:
-          working_directory: server
-          name: php test
-          command: vendor/bin/phpunit
+      # - run:
+          # working_directory: server
+          # name: php test
+          # command: vendor/bin/phpunit
