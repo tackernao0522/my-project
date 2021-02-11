@@ -11,56 +11,51 @@ use App\Models\Task;
 
 class TaskController extends Controller
 {
-    public function index(int $id)
+    public function index(Folder $folder)
     {
         // ユーザーのフォルダを取得
         $folders = Auth::user()->folders()->get();
 
-        // 選ばれたフォルダを取得
-        $current_folder = Folder::find($id);
-
         // 選ばれたフォルダに紐付くタスクを取得
-        $tasks = $current_folder->tasks()->get();
+        $tasks = $folder->tasks()->get();
 
         return view('tasks.index', [
             'folders' => $folders,
-            'current_folder_id' => $current_folder->id,
+            'current_folder_id' => $folder->id,
             'tasks' => $tasks,
         ]);
     }
 
-    public function showCreateForm(int $id)
+    public function showCreateForm(Folder $folder)
     {
         return view('tasks.create', [
-            'folder_id' => $id,
+            'folder_id' => $folder->id,
         ]);
     }
 
-    public function create(CreateTask $request, int $id)
+    public function create(CreateTask $request, Folder $folder)
     {
-        $current_folder = Folder::find($id);
-
         $task = new Task();
         $task->title = $request->title;
         $task->due_date = $request->due_date;
 
-        $current_folder->tasks()->save($task);
+        $folder->tasks()->save($task);
 
         return redirect()->route('tasks.index', [
-            'id' => $current_folder->id,
+            'folder' => $folder->id,
         ]);
     }
 
-    public function showEditForm(int $id, int $task_id)
+    public function showEditForm(Folder $folder, Task $task)
     {
-        $task = Task::find($task_id);
+        $this->checkRelation($folder, $task);
 
         return view('tasks.edit', ['task' => $task]);
     }
 
-    public function edit(EditTask $request, int $id, int $task_id)
+    public function edit(EditTask $request, Folder $folder, Task $task)
     {
-        $task = Task::find($task_id);
+        $this->checkRelation($folder, $task);
 
         $task->title = $request->title;
         $task->status = $request->status;
@@ -68,7 +63,14 @@ class TaskController extends Controller
         $task->save();
 
         return redirect()->route('tasks.index', [
-            'id' => $task->folder_id,
+            'folder' => $task->folder_id,
         ]);
+    }
+
+    private function checkRelation(Folder $folder, Task $task)
+    {
+        if ($folder->id !== $task->folder_id) {
+            abort(404);
+        }
     }
 }

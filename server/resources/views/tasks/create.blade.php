@@ -16,7 +16,7 @@
         <div class="panel-heading">タスクを追加する</div>
         <div class="panel-body">
           @include('error_card_list')
-          <form method="POST" action="{{ route('tasks.create', ['id' => $folder_id]) }}">
+          <form method="POST" action="{{ route('tasks.create', ['folder' => $folder_id]) }}">
             @csrf
             <div class="form-group">
               <label for="title">タイトル</label>

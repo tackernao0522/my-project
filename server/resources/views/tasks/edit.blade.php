@@ -16,7 +16,7 @@
         <div class="panel-heading">タスクを編集する</div>
         <div class="panel-body">
           @include('error_card_list')
-          <form method="POST" action="{{ route('tasks.edit', ['id' => $task->folder_id, 'task_id' => $task->id]) }}">
+          <form method="POST" action="{{ route('tasks.edit', ['folder' => $task->folder_id, 'task' => $task->id]) }}">
             @csrf
             <div class=form-group>
               <label for="title">タイトル</label>
