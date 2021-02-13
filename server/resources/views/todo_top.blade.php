@@ -14,6 +14,7 @@ TodoTop
                 </div>
                 <div class="panel-body">
                     <div class="text-center">
+                        <a class="btn btn-danger" href="/">キャンセル</a>
                         <a href="{{ route('folders.create') }}" class="btn btn-primary">
                             フォルダ作成ページへ
                         </a>

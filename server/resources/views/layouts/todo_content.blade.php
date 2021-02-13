@@ -27,20 +27,23 @@
 <body>
   <header>
     <nav class="my-navbar">
-      <a class="my-navbar-brand" href="/">アプリ一覧へ</a>
+      <a class="my-navbar-brand" style="padding-left: 7rem;" href="/">アプリ一覧へ</a>
       <div class="my-navbar-control">
-        @if(Auth::check())
-        <span class="my-navbar-item">ようこそ、 {{ Auth::user()->name }}さん</span>
-        ｜
-        <a href="#" id="logout" class="my-navbar-item">ログアウト</a>
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-          @csrf
-        </form>
-        @else
-        <a class="my-navbar-item" href="{{ route('login') }}">ログイン</a>
-        ｜
-        <a class="my-navbar-item" href="{{ route('register') }}">会員登録</a>
-        @endif
+        <div class="dropdown" style="padding-right: 7rem;">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            MENU
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="margin-right: 4rem; margin-top: 1rem;">
+
+            @if(Auth::check())
+            <a href="{{ route('todo') }}" class="dropdown-item" style='color: #fff; display: block; text-align: center; padding-top: 1rem;'>ようこそ、{{ Auth::user()->name }}さん</a>
+            <a href="#" id="logout" class="dropdown-item" style="margin: 0 auto; padding-left: 1.5rem; display: block; padding-top: 0.5rem;">ログアウト</a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+              @csrf
+            </form>
+            @endif
+          </div>
+        </div>
       </div>
     </nav>
   </header>
@@ -49,12 +52,12 @@
   </main>
 </body>
 @if(Auth::check())
-  <script>
-    document.getElementById('logout').addEventListener('click', function(event) {
-      event.preventDefault();
-      document.getElementById('logout-form').submit();
-    });
-  </script>
+<script>
+  document.getElementById('logout').addEventListener('click', function(event) {
+    event.preventDefault();
+    document.getElementById('logout-form').submit();
+  });
+</script>
 @endif
 @yield('scripts')
 

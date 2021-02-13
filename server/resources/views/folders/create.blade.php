@@ -19,6 +19,7 @@
               <input type="text" class="form-control" name="title" id="title" value="{{ old('title') }}">
             </div>
             <div class="text-right">
+              　<a class="btn btn-danger" href="{{ route('todo') }}">キャンセル</a>
               <button type="submit" class="btn btn-primary">送信</button>
             </div>
           </form>
