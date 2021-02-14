@@ -1,7 +1,7 @@
 +--------+----------+------------------------------------+-----------------------+------------------------------------------------------------------------+---------------------------------------------------------+
 | Domain | Method   | URI                                | Name                  | Action                                                                 | Middleware                                              |
 +--------+----------+------------------------------------+-----------------------+------------------------------------------------------------------------+---------------------------------------------------------+
-|        | GET|HEAD | /                                  |                       | Closure                                                                | App\Http\Middleware\EncryptCookies                      |
+|        | GET|HEAD | /                                  | top                   | App\Http\Controllers\ApplicationController@showApplications            | App\Http\Middleware\EncryptCookies                      |
 |        |          |                                    |                       |                                                                        | Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse |
 |        |          |                                    |                       |                                                                        | Illuminate\Session\Middleware\StartSession              |
 |        |          |                                    |                       |                                                                        | Illuminate\View\Middleware\ShareErrorsFromSession       |
@@ -20,6 +20,14 @@
 |        | GET|HEAD | _debugbar/telescope/{id}           | debugbar.telescope    | Barryvdh\Debugbar\Controllers\TelescopeController@show                 | Barryvdh\Debugbar\Middleware\DebugbarEnabled            |
 |        |          |                                    |                       |                                                                        | Closure                                                 |
 |        | GET|HEAD | admin                              | admin                 | App\Http\Controllers\AdminController@showApplicationForm               | App\Http\Middleware\EncryptCookies                      |
+|        |          |                                    |                       |                                                                        | Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse |
+|        |          |                                    |                       |                                                                        | Illuminate\Session\Middleware\StartSession              |
+|        |          |                                    |                       |                                                                        | Illuminate\View\Middleware\ShareErrorsFromSession       |
+|        |          |                                    |                       |                                                                        | App\Http\Middleware\VerifyCsrfToken                     |
+|        |          |                                    |                       |                                                                        | App\Http\Middleware\Authenticate                        |
+|        |          |                                    |                       |                                                                        | Illuminate\Routing\Middleware\SubstituteBindings        |
+|        |          |                                    |                       |                                                                        | App\Http\Middleware\Admin                               |
+|        | POST     | admin                              | admin                 | App\Http\Controllers\AdminController@postApplication                   | App\Http\Middleware\EncryptCookies                      |
 |        |          |                                    |                       |                                                                        | Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse |
 |        |          |                                    |                       |                                                                        | Illuminate\Session\Middleware\StartSession              |
 |        |          |                                    |                       |                                                                        | Illuminate\View\Middleware\ShareErrorsFromSession       |

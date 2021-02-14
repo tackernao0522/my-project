@@ -2,10 +2,14 @@ FROM php:7.4-fpm
 COPY php.ini /usr/local/etc/php/
 
 RUN apt-get update \
-  && apt-get install -y libzip-dev \
-  && apt-get install -y unzip \
-  && apt-get install -y zlib1g-dev mariadb-client \
-  && docker-php-ext-install zip pdo_mysql
+  # && apt-get install -y libzip-dev \
+  # && apt-get install -y unzip \
+  # && apt-get install -y zlib1g-dev mariadb-client \
+  # && docker-php-ext-install zip pdo_mysql
+  && apt-get install -y wget git unzip libzip-dev libpq-dev libfreetype6-dev libjpeg62-turbo-dev libpng-dev \
+  && docker-php-ext-install zip pdo_mysql \
+  && docker-php-ext-configure gd --with-freetype --with-jpeg \
+  && docker-php-ext-install -j$(nproc) gd
 
 #Composer install
 COPY --from=composer /usr/bin/composer /usr/bin/composer
