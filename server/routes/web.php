@@ -2,9 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'ApplicationController@showApplications')->name('top');
 
 Route::group(['middleware' => 'auth'], function () {
     // todo division
@@ -12,6 +10,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/folders/create', 'FolderController@showCreateForm')->name('folders.create');
     Route::post('/folders/create', 'FolderController@create');
     Route::get('/admin', 'AdminController@showApplicationForm')->name('admin');
+    Route::post('/admin', 'AdminController@postApplication')->name('admin');
 
     Route::group(['middleware' => 'can:view,folder'], function () {
         Route::get('/folders/{folder}/tasks', 'TaskController@index')->name('tasks.index');
