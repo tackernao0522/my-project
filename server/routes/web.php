@@ -11,6 +11,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/todo', 'HomeController@index')->name('todo');
     Route::get('/folders/create', 'FolderController@showCreateForm')->name('folders.create');
     Route::post('/folders/create', 'FolderController@create');
+    Route::get('/admin', 'AdminController@showApplicationForm')->name('admin');
 
     Route::group(['middleware' => 'can:view,folder'], function () {
         Route::get('/folders/{folder}/tasks', 'TaskController@index')->name('tasks.index');
@@ -20,5 +21,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/folders/{folder}/tasks/{task}/edit', 'TaskController@edit');
     });
 });
+
 
 Auth::routes();

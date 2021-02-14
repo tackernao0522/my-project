@@ -27,6 +27,7 @@ class UsersTableSeeder extends Seeder
                 'id' => 2,
                 'name' => 'test02',
                 'email' => 'test02@test.test',
+                'role' => 'admin',
                 'email_verified_at' => now(),
                 'password' => Hash::make('testtest02'),
                 'created_at' => Carbon::now(),
