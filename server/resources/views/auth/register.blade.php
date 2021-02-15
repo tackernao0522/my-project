@@ -43,6 +43,14 @@
                 <div class="signup-image">
                     <figure><a href="/"><img src="images/signup-image.jpg" alt="sing up image"></a></figure>
                     <a href="{{ route('login') }}" class="signup-image-link">アカウントをお持ちの方は</a>
+                    <div class="social-login" style="margin-top: 10px;">
+                        <span class="social-label">Or signin with</span>
+                        <ul class="socials">
+                            <li><a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
+                            <li><a href="#"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
+                            <li><a href="{{ route('login.{provider}', ['provider' => 'google']) }}"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

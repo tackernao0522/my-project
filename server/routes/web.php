@@ -4,6 +4,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'ApplicationController@showApplications')->name('top');
 
+Route::prefix('login')->name('login.')->group(function () {
+    Route::get('/{provider}', 'Auth\LoginController@redirectToProvider')->name('{provider}');
+    Route::get('/{provider}/callback', 'Auth\LoginController@handleProviderCallback')->name('{provider}.callback');
+});
+Route::prefix('register')->name('register.')->group(function () {
+    Route::get('/{provider}', 'Auth\RegisterController@showProviderUserRegistrationForm')->name('{provider}');
+    Route::post('/{provider}', 'Auth\RegisterController@registerProviderUser')->name('{provider}');
+});
+
 Route::group(['middleware' => 'auth'], function () {
     // todo division
     Route::get('/todo', 'HomeController@index')->name('todo');
