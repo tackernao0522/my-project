@@ -27,6 +27,7 @@ class PostAppRequest extends FormRequest
             'item-image' => ['required', 'file', 'image'],
             'title' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string', 'max:2000'],
+            'url' => ['url', 'nullable'],
         ];
     }
 
@@ -36,6 +37,7 @@ class PostAppRequest extends FormRequest
             'item-image' => 'アプリ画像',
             'title' => 'アプリ名',
             'description' => 'アプリの説明',
+            'url' => 'リンク先には',
         ];
     }
 }

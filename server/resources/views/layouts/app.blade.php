@@ -22,15 +22,18 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 @if(Auth::check())
-                <span class="btn btn-outline-light my-2 my-sm-0 ml-auto">ようこそ、 {{ Auth::user()->name }}さん</span>
+                <span class="btn btn-outline-light my-2 my-sm-0">ようこそ、 {{ Auth::user()->name }}さん</span>
                 <form method="POST" action="{{ route('logout') }}" class="form-inline my-2 my-lg-0 ml-auto" id="logout-form">
                     @csrf
-                    <a href="#" id="logout" class="form-control mr-sm-2">ログアウト</a>
+                    <a href="#" id="logout" class="form-control mr-sm-2" style="width: 110px; display: block; text-align: center;">ログアウト</a>
                 </form>
+                <a class="my-navbar-item pl-1　mr-sm-2 btn btn-dark" href="{{ route('admin') }}" style="color: #fff;">管理者</a>
                 @else
                 <a class="my-navbar-item ml-auto" href="{{ route('login') }}" style="color: #000044">ログイン</a>
                 ｜
-                <a class="my-navbar-item" href="{{ route('register') }}" style="color: #000044">会員登録</a>
+                <a class="my-navbar-item pr-1" href="{{ route('register') }}" style="color: #000044">会員登録</a>
+                |
+                <a class="my-navbar-item pl-1" href="{{ route('admin') }}" style="color: #000044">管理者</a>
                 @endif
             </div>
         </nav>

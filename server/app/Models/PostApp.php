@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class PostApp extends Model
 {
     protected $fillable = [
-        'image_file_name', 'title', 'description',
+        'image_file_name', 'title', 'description', 'url'
     ];
 }
