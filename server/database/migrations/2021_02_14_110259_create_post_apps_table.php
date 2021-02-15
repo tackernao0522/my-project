@@ -18,6 +18,7 @@ class CreatePostAppsTable extends Migration
             $table->string('image_file_name');
             $table->string('title');
             $table->text('description');
+            $table->longText('url')->nullable($value = true);
             $table->timestamps();
         });
     }

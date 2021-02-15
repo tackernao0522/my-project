@@ -60,6 +60,17 @@
           @enderror
         </div>
 
+        {{-- アプリのURL --}}
+        <div class="form-group mt-3">
+          <label for="url">アプリのURL</label>
+          <input id="url" type="url" class="form-control @error('url') is-invalid @enderror" name="url" value="{{ old('url') }}" required autocomplete="url" autofocus>
+          @error('url')
+          <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+          </span>
+          @enderror
+        </div>
+
         <div class="form-group mb-0 mt-3">
           <button type="submit" class="btn btn-block btn-primary">
             投稿する
