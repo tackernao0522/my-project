@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Http\Request;
-use Laravel\Socialite\Facades\Socialite;
+
+use Auth;
+use Socialite;
+use App\Models\User;
+use App\Models\IdentityProvider;
 
 class LoginController extends Controller
 {
@@ -41,26 +42,48 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function redirectToProvider(string $provider)
+    public function redirectToProvider($social)
     {
-        return Socialite::driver($provider)->redirect();
+        return Socialite::driver($social)->redirect();
     }
 
-    public function handleProviderCallback(Request $request, string $provider)
+    public function handleProviderCallback($provider)
     {
-        $providerUser = Socialite::driver($provider)->stateless()->user();
-
-        $user = User::where('email', $providerUser->getEmail())->first();
-
-        if ($user) {
-            $this->guard()->login($user, true);
-            return $this->sendLoginResponse($request);
+        try {
+            $user = Socialite::driver($provider)->user();
+        } catch (Exception $e) {
+            return redirect('/login');
         }
 
-        return redirect()->route('register.{provider}', [
-            'provider' => $provider,
-            'email' => $providerUser->getEmail(),
-            'token' => $providerUser->token,
-        ]);
+        $authUser = $this->findOrCreateUser($user, $provider);
+        Auth::login($authUser, true);
+        return redirect($this->redirectTo);
+    }
+
+    public function findOrCreateUser($providerUser, $provider)
+    {
+        $account = IdentityProvider::whereProviderName($provider)
+            ->whereProviderId($providerUser->getId())
+            ->first();
+
+        if ($account) {
+            return $account->user;
+        } else {
+            $user = User::whereEmail($providerUser->getEmail())->first();
+
+            if (!$user) {
+                $user = User::create([
+                    'email' => $providerUser->getEmail(),
+                    'name'  => $providerUser->getName(),
+                ]);
+            }
+
+            $user->IdentityProvider()->create([
+                'provider_id'   => $providerUser->getId(),
+                'provider_name' => $provider,
+            ]);
+
+            return $user;
+        }
     }
 }

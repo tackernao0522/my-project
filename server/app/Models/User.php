@@ -52,4 +52,9 @@ class User extends Authenticatable
     {
         $this->notify(new PasswordResetNotification($token, new BareMail()));
     }
+
+    function IdentityProvider()
+    {
+        return $this->hasMany(IdentityProvider::class);
+    }
 }
