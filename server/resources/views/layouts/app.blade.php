@@ -10,6 +10,8 @@
     </title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="shortcut icon" href="/images/tp.ico">
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 
 <body>
@@ -27,7 +29,7 @@
                     @csrf
                     <a href="#" id="logout" class="form-control mr-sm-2" style="width: 110px; display: block; text-align: center;">ログアウト</a>
                 </form>
-                <a class="my-navbar-item pl-1　mr-sm-2 btn btn-dark" href="{{ route('admin') }}" style="color: #fff;">管理者</a>
+                <a class="my-navbar-item pl-1 mr-sm-2 btn btn-dark" href="{{ route('admin') }}" style=" width: 110px; color: #fff; display: block; text-align: center;">管理者</a>
                 @else
                 <a class="my-navbar-item ml-auto" href="{{ route('login') }}" style="color: #000044">ログイン</a>
                 ｜
@@ -39,9 +41,6 @@
         </nav>
         @yield('content')
     </main>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     @if(Auth::check())
     <script>
         document.getElementById('logout').addEventListener('click', function(event) {

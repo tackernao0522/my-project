@@ -26,7 +26,7 @@
                         </div>
                         <div class="form-group">
                             <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
-                            <input type="password" name="password" id="password" placeholder="Password" required>
+                            <input type="password" name="password" id="password" placeholder="Password" autocomplete="off" required>
                         </div>
                         <div class="mt-1">
                             パスワードをお忘れの方は<a href="{{ route('password.request') }}">こちら</a>
@@ -43,8 +43,8 @@
                         <span class="social-label">Or login with</span>
                         <ul class="socials">
                             <li><a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
-                            <li><a href="#"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
-                            <li><a href="{{ route('login.{provider}', ['provider' => 'google']) }}"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
+                            <li><a href="{{ url('login/twitter')}}"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
+                            <li><a href="{{ url('login/google')}}"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
                         </ul>
                     </div>
                 </div>

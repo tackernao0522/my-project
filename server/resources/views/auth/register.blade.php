@@ -25,11 +25,11 @@
                         </div>
                         <div class="form-group">
                             <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-                            <input type="password" name="password" id="password" placeholder="Password" requried />
+                            <input type="password" name="password" id="password" placeholder="Password" autocomplete="off" requried />
                         </div>
                         <div class="form-group">
                             <label for="password"><i class="zmdi zmdi-lock-outline"></i></label>
-                            <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Repeat your password" required />
+                            <input type="password" name="password_confirmation" id="password_confirmation" autocomplete="off" placeholder="Repeat your password" required />
                         </div>
                         <div class="form-group">
                             <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" value="1" />
@@ -47,8 +47,8 @@
                         <span class="social-label">Or signin with</span>
                         <ul class="socials">
                             <li><a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
-                            <li><a href="#"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
-                            <li><a href="{{ route('login.{provider}', ['provider' => 'google']) }}"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
+                            <li><a href="{{ url('login/twitter')}}"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
+                            <li><a href="{{ url('login/google')}}"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
                         </ul>
                     </div>
                 </div>
