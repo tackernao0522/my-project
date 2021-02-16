@@ -33,6 +33,7 @@ class AdminController extends Controller
         $app->image_file_name = $imageName;
         $app->title = $request->input('title');
         $app->description = $request->input('description');
+        $app->user_id = $request->user()->id;
         $app->url = $request->input('url');
         $app->save();
 

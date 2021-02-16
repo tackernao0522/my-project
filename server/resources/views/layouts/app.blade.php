@@ -29,13 +29,13 @@
                     @csrf
                     <a href="#" id="logout" class="form-control mr-sm-2" style="width: 110px; display: block; text-align: center;">ログアウト</a>
                 </form>
-                <a class="my-navbar-item pl-1 mr-sm-2 btn btn-dark" href="{{ route('admin') }}" style=" width: 110px; color: #fff; display: block; text-align: center;">管理者</a>
+                <a class="my-navbar-item pl-1 mr-sm-2 btn btn-dark" href="{{ route('admin') }}" style=" width: 85px; color: #fff; display: block; text-align: center;">管理者用</a>
                 @else
                 <a class="my-navbar-item ml-auto" href="{{ route('login') }}" style="color: #000044">ログイン</a>
                 ｜
                 <a class="my-navbar-item pr-1" href="{{ route('register') }}" style="color: #000044">会員登録</a>
                 |
-                <a class="my-navbar-item pl-1" href="{{ route('admin') }}" style="color: #000044">管理者</a>
+                <a class="my-navbar-item pl-1" href="{{ route('admin') }}" style="color: #000044">管理者用</a>
                 @endif
             </div>
         </nav>

@@ -18,6 +18,8 @@ class CreatePostAppsTable extends Migration
             $table->string('image_file_name');
             $table->string('title');
             $table->text('description');
+            $table->bigInteger('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->longText('url')->nullable($value = true);
             $table->timestamps();
         });
