@@ -19,7 +19,7 @@
 |        |          |                                    |                       |                                                                        | Closure                                                 |
 |        | GET|HEAD | _debugbar/telescope/{id}           | debugbar.telescope    | Barryvdh\Debugbar\Controllers\TelescopeController@show                 | Barryvdh\Debugbar\Middleware\DebugbarEnabled            |
 |        |          |                                    |                       |                                                                        | Closure                                                 |
-|        | POST     | admin                              | admin                 | App\Http\Controllers\AdminController@postApplication                   | App\Http\Middleware\EncryptCookies                      |
+|        | GET|HEAD | admin                              | admin                 | App\Http\Controllers\AdminController@showApplicationForm               | App\Http\Middleware\EncryptCookies                      |
 |        |          |                                    |                       |                                                                        | Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse |
 |        |          |                                    |                       |                                                                        | Illuminate\Session\Middleware\StartSession              |
 |        |          |                                    |                       |                                                                        | Illuminate\View\Middleware\ShareErrorsFromSession       |
@@ -27,7 +27,7 @@
 |        |          |                                    |                       |                                                                        | App\Http\Middleware\Authenticate                        |
 |        |          |                                    |                       |                                                                        | Illuminate\Routing\Middleware\SubstituteBindings        |
 |        |          |                                    |                       |                                                                        | App\Http\Middleware\Admin                               |
-|        | GET|HEAD | admin                              | admin                 | App\Http\Controllers\AdminController@showApplicationForm               | App\Http\Middleware\EncryptCookies                      |
+|        | POST     | admin                              | admin                 | App\Http\Controllers\AdminController@postApplication                   | App\Http\Middleware\EncryptCookies                      |
 |        |          |                                    |                       |                                                                        | Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse |
 |        |          |                                    |                       |                                                                        | Illuminate\Session\Middleware\StartSession              |
 |        |          |                                    |                       |                                                                        | Illuminate\View\Middleware\ShareErrorsFromSession       |
@@ -38,7 +38,7 @@
 |        | GET|HEAD | api/user                           |                       | Closure                                                                | App\Http\Middleware\Authenticate:api                    |
 |        |          |                                    |                       |                                                                        | Illuminate\Routing\Middleware\ThrottleRequests:60,1     |
 |        |          |                                    |                       |                                                                        | Illuminate\Routing\Middleware\SubstituteBindings        |
-|        | POST     | folders/create                     |                       | App\Http\Controllers\FolderController@create                           | App\Http\Middleware\EncryptCookies                      |
+|        | DELETE   | apps/{app}                         | apps.destroy          | App\Http\Controllers\ApplicationController@destroy                     | App\Http\Middleware\EncryptCookies                      |
 |        |          |                                    |                       |                                                                        | Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse |
 |        |          |                                    |                       |                                                                        | Illuminate\Session\Middleware\StartSession              |
 |        |          |                                    |                       |                                                                        | Illuminate\View\Middleware\ShareErrorsFromSession       |
@@ -46,6 +46,13 @@
 |        |          |                                    |                       |                                                                        | App\Http\Middleware\Authenticate                        |
 |        |          |                                    |                       |                                                                        | Illuminate\Routing\Middleware\SubstituteBindings        |
 |        | GET|HEAD | folders/create                     | folders.create        | App\Http\Controllers\FolderController@showCreateForm                   | App\Http\Middleware\EncryptCookies                      |
+|        |          |                                    |                       |                                                                        | Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse |
+|        |          |                                    |                       |                                                                        | Illuminate\Session\Middleware\StartSession              |
+|        |          |                                    |                       |                                                                        | Illuminate\View\Middleware\ShareErrorsFromSession       |
+|        |          |                                    |                       |                                                                        | App\Http\Middleware\VerifyCsrfToken                     |
+|        |          |                                    |                       |                                                                        | App\Http\Middleware\Authenticate                        |
+|        |          |                                    |                       |                                                                        | Illuminate\Routing\Middleware\SubstituteBindings        |
+|        | POST     | folders/create                     |                       | App\Http\Controllers\FolderController@create                           | App\Http\Middleware\EncryptCookies                      |
 |        |          |                                    |                       |                                                                        | Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse |
 |        |          |                                    |                       |                                                                        | Illuminate\Session\Middleware\StartSession              |
 |        |          |                                    |                       |                                                                        | Illuminate\View\Middleware\ShareErrorsFromSession       |

@@ -14,6 +14,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/folders/create', 'FolderController@create');
     Route::get('/admin', 'AdminController@showApplicationForm')->name('admin');
     Route::post('/admin', 'AdminController@postApplication')->name('admin');
+    Route::delete('apps/{app}', 'ApplicationController@destroy')->name('apps.destroy');
 
     Route::group(['middleware' => 'can:view,folder'], function () {
         Route::get('/folders/{folder}/tasks', 'TaskController@index')->name('tasks.index');
