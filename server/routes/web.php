@@ -22,6 +22,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/folders/{folder}/tasks/create', 'TaskController@create');
         Route::get('/folders/{folder}/tasks/{task}/edit', 'TaskController@showEditForm')->name('tasks.edit');
         Route::post('/folders/{folder}/tasks/{task}/edit', 'TaskController@edit');
+        Route::delete('/folders/{folder}/tasks/{task}', 'TaskController@destroy')->name('tasks.destroy');
     });
 });
 
