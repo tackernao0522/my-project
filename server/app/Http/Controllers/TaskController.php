@@ -67,6 +67,16 @@ class TaskController extends Controller
         ]);
     }
 
+    public function destroy(Folder $folder, Task $task)
+    {
+        $task->delete();
+
+        return redirect()->route('tasks.index', [
+            'task' => $task->id,
+            'folder' => $task->folder_id,
+        ])->with('status', '指定のタスクを削除しました。');
+    }
+
     private function checkRelation(Folder $folder, Task $task)
     {
         if ($folder->id !== $task->folder_id) {
