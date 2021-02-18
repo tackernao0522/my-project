@@ -27,6 +27,21 @@ class FolderController extends Controller
         ]);
     }
 
+    public function showEditForm(Folder $folder)
+    {
+        return view('folders.edit', ['folder' => $folder]);
+    }
+
+    public function edit(CreateFolder $request, Folder $folder)
+    {
+        $folder->title = $request->title;
+        $folder->save();
+
+        return redirect()->route('tasks.index', [
+            'folder' => $folder->id,
+        ])->with('status', 'フォルダ名を更新しました。');
+    }
+
     public function destroy(Folder $folder)
     {
         $folder->delete();
