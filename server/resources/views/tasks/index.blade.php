@@ -36,6 +36,11 @@ Todo
               </div>
             </form>
           </a>
+          <div class="panel-body" style="width: 300px; margin: 0 auto;">
+            <a href="{{ route('folders.edit', ['folder' => $folder->id]) }}" class="btn btn-success btn-block">
+              {{ $folder->title }}のフォルダ名を編集する
+            </a>
+          </div>
           @endforeach
         </div>
       </nav>
