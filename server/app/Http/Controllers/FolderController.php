@@ -26,4 +26,19 @@ class FolderController extends Controller
             'folder' => $folder->id,
         ]);
     }
+
+    public function destroy(Folder $folder)
+    {
+        $folder->delete();
+
+        // まだひとつもフォルダを作っていなくればTodo_Topページをレスポンス
+        if (is_null($folder)) {
+            return view('todo_top')->with('status', '指定のフォルダを削除しました。');
+        }
+
+        // フォルダがあればそのフォルダのタスク一覧にリダイレクト
+        return redirect()
+            ->route('todo', ['folder' => $folder->id])
+            ->with('status', '指定のフォルダを削除しました。');
+    }
 }

@@ -34,6 +34,6 @@ class Admin
         }
 
         // それ以外はinformationページにリダイレクト
-        return redirect('/')->with('error', '権限がありません');
+        return redirect('/')->with('status', '管理者ページへの権限がありません。');
     }
 }
