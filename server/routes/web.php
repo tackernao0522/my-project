@@ -12,6 +12,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/todo', 'HomeController@index')->name('todo');
     Route::get('/folders/create', 'FolderController@showCreateForm')->name('folders.create');
     Route::post('/folders/create', 'FolderController@create');
+    Route::delete('/folders/{folder}/tasks', 'FolderController@destroy')->name('folders.destroy');
     Route::get('/admin', 'AdminController@showApplicationForm')->name('admin');
     Route::post('/admin', 'AdminController@postApplication')->name('admin');
     Route::delete('apps/{app}', 'ApplicationController@destroy')->name('apps.destroy');

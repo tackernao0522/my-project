@@ -7,6 +7,15 @@
 @section('content')
 <div class="container-sm">
     <div class="row">
+        <div class="col-8 mt-3 offset-2" style="text-align: center;">
+            @if (session('status'))
+            <div class="alert alert-success" role="alert">
+                {{ session('status') }}
+            </div>
+            @endif
+        </div>
+    </div>
+    <div class="row">
         @foreach($apps as $app)
         <div class="card-group mt-4 mb-3 mx-auto">
             <div class="card" style="width: 18rem">

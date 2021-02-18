@@ -6,7 +6,7 @@ Todo
 
 @section('content')
 <div class="container">
-    <div class="row">
+  <div class="row">
     <div class="col-8 mt-3 offset-2" style="text-align: center;">
       @if (session('status'))
       <div class="alert alert-success" role="alert">
@@ -28,10 +28,18 @@ Todo
           @foreach($folders as $folder)
           <a href="{{ route('tasks.index', ['folder' => $folder->id]) }}" class="list-group-item {{ $current_folder_id === $folder->id ? 'active' : '' }}">
             {{ $folder->title }}
+            <form method="POST" action="{{ route('folders.destroy', ['folder' => $folder->id]) }}">
+              @csrf
+              @method('DELETE')
+              <div class="text-right" style="margin-top: -20px;">
+                <button type="submit" class="label-danger" style="border-radius: 10px; color: #fff;">削除</button>
+              </div>
+            </form>
           </a>
           @endforeach
         </div>
       </nav>
+      <small style="color:crimson; display: block; margin: 10px 10px;">注: フォルダを削除するとタスクも同時に削除されます。</small>
     </div>
     <div class="column col-md-8">
       <div class="panel panel-default">
@@ -63,7 +71,7 @@ Todo
               <form method="POST" action="{{ route('tasks.destroy', ['folder' => $task->folder_id, 'task' => $task->id]) }}">
                 @csrf
                 @method('DELETE')
-                <td><button type="submit" class="label-danger p-0" style="width: 36px; height: 20px; margin-left: -13px; font-weight: bold; font-size: 10px; color: #fff;">削除</button></td>
+                <td><button type="submit" class="label-danger p-0" style="border-radius: 10px; width: 36px; height: 20px; margin-left: -13px; font-weight: bold; font-size: 10px; color: #fff;">削除</button></td>
               </form>
             </tr>
             @endforeach
