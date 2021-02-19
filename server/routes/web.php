@@ -15,8 +15,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/folders/{folder}/edit', 'FolderController@showEditForm')->name('folders.edit');
     Route::post('/folders/{folder}/edit', 'FolderController@edit');
     Route::delete('/folders/{folder}/tasks', 'FolderController@destroy')->name('folders.destroy');
-    Route::get('/admin', 'AdminController@showApplicationForm')->name('admin');
-    Route::post('/admin', 'AdminController@postApplication')->name('admin');
+    Route::get('/admin/app_index', 'AdminController@index')->name('admin.index');
+    Route::get('/posts_app', 'ApplicationController@showApplicationForm')->name('posts.app');
+    Route::post('/posts_app', 'ApplicationController@postApplication');
     Route::delete('apps/{app}', 'ApplicationController@destroy')->name('apps.destroy');
 
     Route::group(['middleware' => 'can:view,folder'], function () {
