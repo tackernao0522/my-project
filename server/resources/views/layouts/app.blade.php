@@ -28,14 +28,14 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 @if(Auth::check())
                 <span class="btn btn-outline-light my-2 my-sm-0">ようこそ、 {{ Auth::user()->name }}さん</span>
-                    <a class="my-navbar-item pl-1 ml-sm-2 btn btn-dark" href="{{ route('posts.app') }}" style="width: 100px; color: #fff; display: block; text-align: center;">アプリ投稿</a>
+                <a class="my-navbar-item pl-1 ml-sm-2 btn btn-dark" href="{{ route('posts.app') }}" style="width: 100px; color: #fff; display: block; text-align: center;">アプリ投稿</a>
                 <form method="POST" action="{{ route('logout') }}" class="form-inline my-2 my-lg-0 ml-auto" id="logout-form">
                     @csrf
                     <a href="#" id="logout" class="form-control mr-sm-2" style="width: 110px; display: block; text-align: center;">ログアウト</a>
                 </form>
-                    @if( Auth::check() && Auth::user()->role === 'admin' )
-                    <a class="my-navbar-item pl-1 mr-sm-2 btn btn-dark" href="{{ route('admin.index') }}" style=" width: 85px; color: #fff; display: block; text-align: center;">管理者用</a>
-                    @endif
+                @if( Auth::check() && Auth::user()->role === 'admin' )
+                <a class="my-navbar-item pl-1 mr-sm-2 btn btn-dark" href="{{ route('admin.index') }}" style=" width: 85px; color: #fff; display: block; text-align: center;">管理者用</a>
+                @endif
                 @else
                 <a class="my-navbar-item ml-auto" href="{{ route('login') }}" style="color: #000044">ログイン</a>
                 ｜

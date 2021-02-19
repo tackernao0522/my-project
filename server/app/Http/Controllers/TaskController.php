@@ -43,7 +43,7 @@ class TaskController extends Controller
 
         return redirect()->route('tasks.index', [
             'folder' => $folder->id,
-        ]);
+        ])->with('status', 'タスクを作成しました。');
     }
 
     public function showEditForm(Folder $folder, Task $task)
@@ -64,7 +64,7 @@ class TaskController extends Controller
 
         return redirect()->route('tasks.index', [
             'folder' => $task->folder_id,
-        ]);
+        ])->with('status', 'タスクを更新しました。');
     }
 
     public function destroy(Folder $folder, Task $task)

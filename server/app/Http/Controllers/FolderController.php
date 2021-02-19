@@ -24,7 +24,7 @@ class FolderController extends Controller
 
         return redirect()->route('tasks.index', [
             'folder' => $folder->id,
-        ]);
+        ])->with('status', 'フォルダを作成しました。');
     }
 
     public function showEditForm(Folder $folder)
