@@ -27,13 +27,13 @@
 <body>
   <header>
     <nav class="my-navbar">
-      <a class="my-navbar-brand" style="padding-left: 7rem;" href="/">アプリ一覧へ</a>
+      <a class="my-navbar-brand" style="padding-left: 4rem;" href="/">アプリ一覧へ</a>
       <div class="my-navbar-control">
-        <div class="dropdown" style="padding-right: 7rem;">
+        <div class="dropdown" style="padding-right: 4rem;">
           <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             MENU
           </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="margin-right: 4rem; margin-top: 1rem;">
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="margin-right: 6rem; margin-top: 1rem;">
 
             @if(Auth::check())
             <a href="{{ route('todo') }}" class="dropdown-item" style='color: #fff; display: block; text-align: center; padding-top: 1rem;'>ようこそ、{{ Auth::user()->name }}さん</a>

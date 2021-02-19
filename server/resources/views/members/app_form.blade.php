@@ -6,15 +6,8 @@
 
 @section('content')
 <div class="container">
-  <div class="row">
-    <div class="col-8 mt-3 offset-2">
-      @if (session('status'))
-      <div class="alert alert-success" role="alert">
-        {{ session('status') }}
-      </div>
-      @endif
-    </div>
-  </div>
+
+  @include('share.flash')
 
   <div class="row">
     <div class="col">
@@ -27,7 +20,7 @@
         {{-- アプリ画像 --}}
         <div>アプリ画像</div>
         <span class="item-image-form image-picker">
-        <input type="file" name="item-image" class="d-none" accept="image/png, image/jpeg, image/gif" id="item-image">
+          <input type="file" name="item-image" class="d-none" accept="image/png, image/jpeg, image/gif" id="item-image">
           <label for="item-image" class="d-inline-block" role="button">
             <img src="/images/item-image-default.png" style="object-fit: cover; width: 220px; height: 220px;">
           </label>

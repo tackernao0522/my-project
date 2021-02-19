@@ -6,15 +6,9 @@ TodoTop
 
 @section('content')
 <div class="container">
-    <div class="row">
-        <div class="col-8 mt-3 offset-2" style="text-align: center;">
-            @if (session('status'))
-            <div class="alert alert-success" role="alert">
-                {{ session('status') }}
-            </div>
-            @endif
-        </div>
-    </div>
+
+    @include('share.flash')
+
     <div class="row">
         <div class="col col-md-offset-3 col-md-6">
             <nav class="panel panel-default">
