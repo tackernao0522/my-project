@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-商品出品
+アプリ投稿
 @endsection
 
 @section('content')
@@ -21,7 +21,7 @@
 
       <div class="font-weight-bold text-center border-bottom pb-3 pt-3" style="font-size: 24px">アプリを投稿する</div>
 
-      <form method="POST" action="{{ route('admin') }}" class="p-5" enctype="multipart/form-data">
+      <form method="POST" action="{{ route('posts.app') }}" class="p-5" enctype="multipart/form-data">
         @csrf
 
         {{-- アプリ画像 --}}
