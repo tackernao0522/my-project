@@ -51,7 +51,7 @@ class ApplicationController extends Controller
 
         Image::make($file)->fit(220, 220)->save($tempPath);
 
-        $filePath = Storage::disk('public')
+        $filePath = Storage::disk('s3')
             ->putFile('item-images', new File($tempPath));
 
         return basename($filePath);
