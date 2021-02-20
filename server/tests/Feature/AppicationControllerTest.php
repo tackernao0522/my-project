@@ -18,4 +18,12 @@ class AppicationControllerTest extends TestCase
         $response->assertStatus(200)
             ->assertViewIs('welcome');
     }
+
+    // 未ログイン時にTopの使用するをクリックするとログイン画面にリダイレクトする
+    public function testGuestUseApplication()
+    {
+        $response = $this->get(route('todo'));
+
+        $response->assertRedirect(route('login'));
+    }
 }
