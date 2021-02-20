@@ -40,4 +40,12 @@ class AppicationControllerTest extends TestCase
         $response->assertStatus(200)
             ->assertViewIs('todo_top');
     }
+
+    // 未ログイン時にアプリ投稿(posts_app)へアクセスしてもログイン画面にリダイレクト
+    public function testGuestPostApplications()
+    {
+        $response = $this->get(route('posts.app'));
+
+        $response->assertRedirect(route('login'));
+    }
 }
