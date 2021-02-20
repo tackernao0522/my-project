@@ -59,4 +59,28 @@ class AppicationControllerTest extends TestCase
 
         $response->assertViewIs('members.app_form');
     }
+
+    // admin以外のmemberが管理者専用画面にアクセスしてもtop画面にリダイレクトされる
+    public function testAuthMembers()
+    {
+        $user = factory(User::class)->create();
+
+        $response = $this->actingAs($user)
+            ->get(route('admin.index'));
+
+        $response->assertRedirect(route('top'));
+    }
+
+    // adminが管理者専用画面にアクセスすると管理者専用画面に遷移
+    public function testAuthAdmin()
+    {
+        $user = factory(User::class)->make([
+            'role' => 'admin',
+        ]);
+
+        $response = $this->actingAs($user)
+            ->get(route('admin.index'));
+
+        $response->assertViewIs('admin.app_index');
+    }
 }
