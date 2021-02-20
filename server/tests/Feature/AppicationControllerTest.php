@@ -48,4 +48,15 @@ class AppicationControllerTest extends TestCase
 
         $response->assertRedirect(route('login'));
     }
+
+    // ログイン状態でアプリ投稿(posts_app)へアクセスするとアプリ投稿画面に遷移可能
+    public function testAuthPostApplications()
+    {
+        $user = factory(User::class)->create();
+
+        $response = $this->actingAs($user)
+            ->get(route('posts.app'));
+
+        $response->assertViewIs('members.app_form');
+    }
 }
