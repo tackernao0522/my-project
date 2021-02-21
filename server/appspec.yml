@@ -1,7 +1,7 @@
 version: 0.0
 os: linux
 files:
-  - source: /lesson-laravel/my-project
+  - source: /
     destination: /home/webapp/tp-ci
 
 permissions:
