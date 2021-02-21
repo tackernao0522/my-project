@@ -2,10 +2,10 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /home/webapp/tp-ci
+    destination: /home/webapp/server
 
 permissions:
-  - object: /home/webapp/tp-ci
+  - object: /home/webapp/server
     owner: webapp
     group: webapp
 
