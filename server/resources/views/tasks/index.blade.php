@@ -72,7 +72,7 @@ Todo
                 <form method="POST" action="{{ route('tasks.destroy', ['folder' => $task->folder_id, 'task' => $task->id]) }}">
                   @csrf
                   @method('DELETE')
-                  <button type="submit" class="label-danger p-0" style="border-radius: 10px; width: 60px; height: 30px; font-size: 15px; color: #fff;">削除</button>
+                  <button type="submit" class="label-danger" style="border-radius: 10px; color: #fff;">削除</button>
                 </form>
               </td>
               <td><span class="label {{ $task->status_class }}">{{ $task->status_label }}</span></td>
