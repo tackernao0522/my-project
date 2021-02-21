@@ -1,11 +1,11 @@
 version: 0.0
 os: linux
 files:
-  - source: /
-    destination: /home/webapp/tp-ci/server
+  - source: /lesson-laravel/my-project
+    destination: /home/webapp/tp-ci
 
 permissions:
-  - object: /home/webapp/tp-ci/server
+  - object: /home/webapp/tp-ci
     owner: webapp
     group: webapp
 
