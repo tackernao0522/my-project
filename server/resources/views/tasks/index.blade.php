@@ -63,7 +63,6 @@ Todo
               <th>状態</th>
               <th>期限</th>
               <th></th>
-              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -72,12 +71,13 @@ Todo
               <td>{{ $task->title }}</td>
               <td><span class="label {{ $task->status_class }}">{{ $task->status_label }}</span></td>
               <td>{{ $task->formatted_due_date }}</td>
-              <td><a class="label-link" href="{{ route('tasks.edit', ['folder' => $task->folder_id, 'task' => $task->id]) }}">編集</a></td>
-              <form method="POST" action="{{ route('tasks.destroy', ['folder' => $task->folder_id, 'task' => $task->id]) }}">
-                @csrf
-                @method('DELETE')
-                <td><button type="submit" class="label-danger p-0" style="border-radius: 10px; width: 36px; height: 20px; margin-left: -13px; font-weight: bold; font-size: 10px; color: #fff;">削除</button></td>
-              </form>
+              <td><a class="label-link" href="{{ route('tasks.edit', ['folder' => $task->folder_id, 'task' => $task->id]) }}">編集</a>
+                <form method="POST" action="{{ route('tasks.destroy', ['folder' => $task->folder_id, 'task' => $task->id]) }}">
+                  @csrf
+                  @method('DELETE')
+                  <button type="submit" class="label-danger p-0" style="border-radius: 10px; width: 36px; height: 20px; margin-left: -4px; font-weight: bold; font-size: 10px; color: #fff;">削除</button>
+                </form>
+              </td>
             </tr>
             @endforeach
           </tbody>
