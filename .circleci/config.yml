@@ -51,7 +51,7 @@ jobs:
       - run: sudo composer self-update
       - restore_cache:
           key: composer install -n --no-dev-v1-{{ checksum "./server/composer.lock" }}
-      - run: composer install -n -no-dev --prefer-dist --working-dir=./server/
+      - run: composer install -n --no-dev --prefer-dist --working-dir=./server/
       - save_cache:
           key: composer-no-dev-v1-{{ checksum "./server/composer.lock" }}
           paths:
