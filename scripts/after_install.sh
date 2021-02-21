@@ -2,6 +2,6 @@
 
 set -eux
 
-cd ~/server
+cd ~/tp-ci/server
 php artisan migrate --force
 php artisan config:cache
