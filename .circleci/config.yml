@@ -71,18 +71,18 @@ jobs:
       - run: cd server/; npm run prod
       - run:
           name: archive artifacts
-          command: cd server/; zip -ryq server.zip
+          command: cd server/; zip -ryq tp-ci.zip .
       - aws-cli/install
       - run:
           name: upload artifacts to s3
-          command: cd tp-ci/; aws s3 cp server.zip s3://${AWS_S3_BUCKET_NAME}
+          command: cd server/; aws s3 cp tp-ci.zip s3://${AWS_S3_BUCKET_NAME}
       - run:
           name: deploy to prod
           command: |
             aws deploy create-deployment \
             --application-name tp-ci \
             --deployment-group-name tp-ci \
-            --s3-location bucket=${AWS_S3_BUCKET_NAME},key=server.zip,bundleType=zip
+            --s3-location bucket=${AWS_S3_BUCKET_NAME},key=tp-ci.zip,bundleType=zip
 
 orbs:
   aws-cli: circleci/aws-cli@1.0.0
