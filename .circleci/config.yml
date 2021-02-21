@@ -71,7 +71,7 @@ jobs:
       - run: cd server/; npm run prod
       - run:
           name: archive artifacts
-          command: cd tp-ci/; zip -ryq server.zip
+          command: cd server/; zip -ryq server.zip
       - aws-cli/install
       - run:
           name: upload artifacts to s3
