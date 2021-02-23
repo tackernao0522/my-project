@@ -76,4 +76,25 @@ class ApplicationController extends Controller
 
         return redirect()->route('top');
     }
+
+    public function like(Request $request, PostApp $app)
+    {
+        $app->likes()->detach($request->user()->id);
+        $app->likes()->attach($request->user()->id);
+
+        return [
+            'id' => $app->id,
+            'countLikes' => $app->count_likes,
+        ];
+    }
+
+    public function unlike(Request $request, PostApp $app)
+    {
+        $app->likes()->detach($request->user()->id);
+
+        return [
+            'id' => $app->id,
+            'countLikes' => $app->count_likes,
+        ];
+    }
 }
