@@ -7,7 +7,9 @@
       <div id="item">
         <div class="card-body pt-0 pb-2 pl-3">
           <div class="card-text">
-            <item-like>
+            <item-like
+             :initial-is-liked-by='@json($app->isLikedBy(Auth::user()))'
+            >
             </item-like>
           </div>
         </div>
