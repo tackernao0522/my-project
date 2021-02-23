@@ -1,4 +1,5 @@
-import './bootstrap'
+require('./bootstrap');
+
 import Vue from 'vue'
 import ItemLike from './components/ItemLike'
 
