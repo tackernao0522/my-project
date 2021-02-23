@@ -10,6 +10,8 @@
             <item-like
              :initial-is-liked-by='@json($app->isLikedBy(Auth::user()))'
              :initial-count-likes='@json($app->count_likes)'
+             :authorized='@json(Auth::check())'
+             endpoint="{{ route('apps.like', ['app' => $app]) }}"
             >
             </item-like>
           </div>
