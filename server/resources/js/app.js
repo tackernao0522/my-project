@@ -1,4 +1,14 @@
 require('./bootstrap');
+import './bootstrap'
+import Vue from 'vue'
+import ItemLike from './components/ItemLike'
+
+const item = new Vue({
+  el: '#item',
+  components: {
+    ItemLike,
+  }
+})
 
 document.querySelector('.image-picker input')
   .addEventListener('change', (e) => {
