@@ -15,4 +15,11 @@ class PostApp extends Model
     {
         return $this->belongsToMany('App\Models\User', 'likes')->withTimestamps();
     }
+
+    public function isLikedBy(?user $user): bool
+    {
+        return $user
+            ? (bool)$this->likes->where('id', $user->id)->count()
+            : false;
+    }
 }
