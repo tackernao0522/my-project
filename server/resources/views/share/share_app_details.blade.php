@@ -9,6 +9,7 @@
           <div class="card-text">
             <item-like
              :initial-is-liked-by='@json($app->isLikedBy(Auth::user()))'
+             :initial-count-likes='@json($app->count_likes)'
             >
             </item-like>
           </div>
