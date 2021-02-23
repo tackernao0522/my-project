@@ -21,6 +21,11 @@ Route::group(['middleware' => 'auth.very_basic'], function () {
         Route::post('/posts_app', 'ApplicationController@postApplication');
         Route::delete('apps/{app}', 'ApplicationController@destroy')->name('apps.destroy');
 
+        Route::prefix('apps')->name('apps.')->group(function () {
+            Route::put('/{app}/like', 'ApplicationController@like')->name('like');
+            Route::delete('/{app}/like', 'ApplicationController@unlike')->name('unlike');
+        });
+
         Route::group(['middleware' => 'can:view,folder'], function () {
             Route::get('/folders/{folder}/tasks', 'TaskController@index')->name('tasks.index');
             Route::get('/folders/{folder}/tasks/create', 'TaskController@showCreateForm')->name('tasks.create');
