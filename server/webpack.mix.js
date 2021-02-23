@@ -14,4 +14,5 @@ const mix = require('laravel-mix');
 mix.js('resources/js/app.js', 'public/js')
 mix.sourceMaps().js('node_modules/popper.js/dist/popper.js', 'public/js').sourceMaps()
     .sass('resources/sass/style.scss', 'public/css')
-    .sass('resources/sass/todo.scss', 'public/css');
+    .sass('resources/sass/todo.scss', 'public/css')
+    .version();
