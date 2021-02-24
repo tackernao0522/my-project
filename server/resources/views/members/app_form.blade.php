@@ -42,6 +42,28 @@
           @enderror
         </div>
 
+        {{-- 言語 --}}
+        <div class="form-group mt-3">
+          <label for="language">言語</label>
+          <input id="language" type="text" class="form-control @error('language') is-invalid @enderror" name="language" value="{{ old('language') }}" required autocomplete="language" autofocus>
+          @error('language')
+          <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+          </span>
+          @enderror
+        </div>
+
+        {{-- フレームワーク --}}
+        <div class="form-group mt-3">
+          <label for="framework">フレームワーク</label>
+          <input id="framework" type="text" class="form-control @error('framework') is-invalid @enderror" name="framework" value="{{ old('framework') }}" autocomplete="framework" autofocus>
+          @error('framework')
+          <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+          </span>
+          @enderror
+        </div>
+
         {{-- アプリの説明 --}}
         <div class="form-group mt-3">
           <label for="description">アプリの説明</label>

@@ -26,6 +26,8 @@ class PostAppRequest extends FormRequest
         return [
             'item-image' => ['required', 'file', 'image'],
             'title' => ['required', 'string', 'max:255'],
+            'language' => ['required', 'string', 'max:255'],
+            'framework' => ['max:255'],
             'description' => ['required', 'string', 'max:2000'],
             'url' => ['url', 'nullable'],
         ];
@@ -36,6 +38,8 @@ class PostAppRequest extends FormRequest
         return [
             'item-image' => 'アプリ画像',
             'title' => 'アプリ名',
+            'language' => '言語',
+            'framework' => 'フレームワーク',
             'description' => 'アプリの説明',
             'url' => 'リンク先には',
         ];

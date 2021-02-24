@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class PostApp extends Model
 {
     protected $fillable = [
-        'image_file_name', 'title', 'description', 'url', 'user_id'
+        'image_file_name', 'title', 'language', 'framework', 'description', 'url', 'user_id'
     ];
 
     public function user(): BelongsTo
