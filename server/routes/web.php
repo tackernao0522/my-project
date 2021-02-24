@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'auth.very_basic'], function () {
     Route::get('/', 'ApplicationController@showApplications')->name('top');
+    Route::get('apps/{app}', 'ApplicationController@showAppDetail')->name('app');
 
     Route::get('/login/{provider}', 'Auth\LoginController@redirectToProvider')->where('social', 'twitter|google');
     Route::get('/login/{provider}/callback', 'Auth\LoginController@handleProviderCallback')->where('social', 'twitter|google');
@@ -16,6 +17,8 @@ Route::group(['middleware' => 'auth.very_basic'], function () {
         Route::get('/folders/{folder}/edit', 'FolderController@showEditForm')->name('folders.edit');
         Route::post('/folders/{folder}/edit', 'FolderController@edit');
         Route::delete('/folders/{folder}/tasks', 'FolderController@destroy')->name('folders.destroy');
+
+        // posts_app division
         Route::get('/admin/app_index', 'AdminController@index')->name('admin.index');
         Route::get('/posts_app', 'ApplicationController@showApplicationForm')->name('posts.app');
         Route::post('/posts_app', 'ApplicationController@postApplication');

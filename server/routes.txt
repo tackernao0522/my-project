@@ -40,12 +40,11 @@
 |        |          |                                    |                       |                                                                        | App\Http\Middleware\Authenticate                        |
 |        |          |                                    |                       |                                                                        | Illuminate\Routing\Middleware\SubstituteBindings        |
 |        |          |                                    |                       |                                                                        | Olssonm\VeryBasicAuth\Http\Middleware\VeryBasicAuth     |
-|        | PUT      | apps/{app}/like                    | apps.like             | App\Http\Controllers\ApplicationController@like                        | App\Http\Middleware\EncryptCookies                      |
+|        | GET|HEAD | apps/{app}                         | app                   | App\Http\Controllers\ApplicationController@showAppDetail               | App\Http\Middleware\EncryptCookies                      |
 |        |          |                                    |                       |                                                                        | Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse |
 |        |          |                                    |                       |                                                                        | Illuminate\Session\Middleware\StartSession              |
 |        |          |                                    |                       |                                                                        | Illuminate\View\Middleware\ShareErrorsFromSession       |
 |        |          |                                    |                       |                                                                        | App\Http\Middleware\VerifyCsrfToken                     |
-|        |          |                                    |                       |                                                                        | App\Http\Middleware\Authenticate                        |
 |        |          |                                    |                       |                                                                        | Illuminate\Routing\Middleware\SubstituteBindings        |
 |        |          |                                    |                       |                                                                        | Olssonm\VeryBasicAuth\Http\Middleware\VeryBasicAuth     |
 |        | DELETE   | apps/{app}/like                    | apps.unlike           | App\Http\Controllers\ApplicationController@unlike                      | App\Http\Middleware\EncryptCookies                      |
@@ -56,7 +55,7 @@
 |        |          |                                    |                       |                                                                        | App\Http\Middleware\Authenticate                        |
 |        |          |                                    |                       |                                                                        | Illuminate\Routing\Middleware\SubstituteBindings        |
 |        |          |                                    |                       |                                                                        | Olssonm\VeryBasicAuth\Http\Middleware\VeryBasicAuth     |
-|        | POST     | folders/create                     |                       | App\Http\Controllers\FolderController@create                           | App\Http\Middleware\EncryptCookies                      |
+|        | PUT      | apps/{app}/like                    | apps.like             | App\Http\Controllers\ApplicationController@like                        | App\Http\Middleware\EncryptCookies                      |
 |        |          |                                    |                       |                                                                        | Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse |
 |        |          |                                    |                       |                                                                        | Illuminate\Session\Middleware\StartSession              |
 |        |          |                                    |                       |                                                                        | Illuminate\View\Middleware\ShareErrorsFromSession       |
@@ -65,6 +64,14 @@
 |        |          |                                    |                       |                                                                        | Illuminate\Routing\Middleware\SubstituteBindings        |
 |        |          |                                    |                       |                                                                        | Olssonm\VeryBasicAuth\Http\Middleware\VeryBasicAuth     |
 |        | GET|HEAD | folders/create                     | folders.create        | App\Http\Controllers\FolderController@showCreateForm                   | App\Http\Middleware\EncryptCookies                      |
+|        |          |                                    |                       |                                                                        | Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse |
+|        |          |                                    |                       |                                                                        | Illuminate\Session\Middleware\StartSession              |
+|        |          |                                    |                       |                                                                        | Illuminate\View\Middleware\ShareErrorsFromSession       |
+|        |          |                                    |                       |                                                                        | App\Http\Middleware\VerifyCsrfToken                     |
+|        |          |                                    |                       |                                                                        | App\Http\Middleware\Authenticate                        |
+|        |          |                                    |                       |                                                                        | Illuminate\Routing\Middleware\SubstituteBindings        |
+|        |          |                                    |                       |                                                                        | Olssonm\VeryBasicAuth\Http\Middleware\VeryBasicAuth     |
+|        | POST     | folders/create                     |                       | App\Http\Controllers\FolderController@create                           | App\Http\Middleware\EncryptCookies                      |
 |        |          |                                    |                       |                                                                        | Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse |
 |        |          |                                    |                       |                                                                        | Illuminate\Session\Middleware\StartSession              |
 |        |          |                                    |                       |                                                                        | Illuminate\View\Middleware\ShareErrorsFromSession       |
@@ -132,7 +139,7 @@
 |        |          |                                    |                       |                                                                        | Illuminate\Routing\Middleware\SubstituteBindings        |
 |        |          |                                    |                       |                                                                        | Olssonm\VeryBasicAuth\Http\Middleware\VeryBasicAuth     |
 |        |          |                                    |                       |                                                                        | Illuminate\Auth\Middleware\Authorize:view,folder        |
-|        | POST     | folders/{folder}/tasks/{task}/edit |                       | App\Http\Controllers\TaskController@edit                               | App\Http\Middleware\EncryptCookies                      |
+|        | GET|HEAD | folders/{folder}/tasks/{task}/edit | tasks.edit            | App\Http\Controllers\TaskController@showEditForm                       | App\Http\Middleware\EncryptCookies                      |
 |        |          |                                    |                       |                                                                        | Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse |
 |        |          |                                    |                       |                                                                        | Illuminate\Session\Middleware\StartSession              |
 |        |          |                                    |                       |                                                                        | Illuminate\View\Middleware\ShareErrorsFromSession       |
@@ -141,7 +148,7 @@
 |        |          |                                    |                       |                                                                        | Illuminate\Routing\Middleware\SubstituteBindings        |
 |        |          |                                    |                       |                                                                        | Olssonm\VeryBasicAuth\Http\Middleware\VeryBasicAuth     |
 |        |          |                                    |                       |                                                                        | Illuminate\Auth\Middleware\Authorize:view,folder        |
-|        | GET|HEAD | folders/{folder}/tasks/{task}/edit | tasks.edit            | App\Http\Controllers\TaskController@showEditForm                       | App\Http\Middleware\EncryptCookies                      |
+|        | POST     | folders/{folder}/tasks/{task}/edit |                       | App\Http\Controllers\TaskController@edit                               | App\Http\Middleware\EncryptCookies                      |
 |        |          |                                    |                       |                                                                        | Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse |
 |        |          |                                    |                       |                                                                        | Illuminate\Session\Middleware\StartSession              |
 |        |          |                                    |                       |                                                                        | Illuminate\View\Middleware\ShareErrorsFromSession       |

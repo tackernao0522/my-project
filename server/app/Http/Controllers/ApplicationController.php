@@ -70,6 +70,11 @@ class ApplicationController extends Controller
         return $meta["uri"];
     }
 
+    public function showAppDetail(PostApp $app)
+    {
+        return view('apps.app_detail', ['app' => $app]);
+    }
+
     public function destroy(PostApp $app)
     {
         $app->delete();
