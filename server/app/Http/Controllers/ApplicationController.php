@@ -31,6 +31,8 @@ class ApplicationController extends Controller
         $app = new PostApp();
         $app->image_file_name = $imageName;
         $app->title = $request->input('title');
+        $app->language = $request->input('language');
+        $app->framework = $request->input('framework');
         $app->description = $request->input('description');
         $app->user_id = $request->user()->id;
         $app->url = $request->input('url');

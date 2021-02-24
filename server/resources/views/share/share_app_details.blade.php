@@ -5,7 +5,10 @@
       <h5 class="card-title">
         <a class="btn btn-success" href="{{ route('app', ['app' => $app]) }}">{{ $app->title }}</a>
       </h5>
-      <p style="margin-left: 10px;">{!! nl2br(e( $app->description )) !!}</p>
+      <p style="margin-left: 10px;">作成者：<a href="#">{{ $app->user->name }}</a></p>
+      <p style="margin-left: 10px;">言語：{{ $app->language }}</p>
+      <p style="margin-left: 10px;">フレームワーク：{{ $app->framework }}</p>
+      <p style="margin-left: 10px;">{!! nl2br(e(Str::limit($app->description, 50))) !!}</p>
       <div class="card-body pt-0 pb-2 pl-3">
         <div class="card-text">
           <item-like :initial-is-liked-by='@json($app->isLikedBy(Auth::user()))' :initial-count-likes='@json($app->count_likes)' :authorized='@json(Auth::check())' endpoint="{{ route('apps.like', ['app' => $app]) }}">
