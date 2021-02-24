@@ -2,7 +2,7 @@
   <div class="card" style="width: 18rem">
     <img src="{{ Storage::disk('s3')->url("item-images/{$app->image_file_name}") }}" class="card-img-top">
     <div class="card-body">
-      <h5 class="card-title" style="color: red;">
+      <h5 class="card-title">
         <a class="btn btn-success" href="{{ route('app', ['app' => $app]) }}">{{ $app->title }}</a>
       </h5>
       <p style="margin-left: 10px;">{!! nl2br(e( $app->description )) !!}</p>
