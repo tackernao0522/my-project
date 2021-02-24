@@ -1,4 +1,4 @@
-<a class="btn btn-danger" data-toggle="modal" data-target="#modal-delete-{{ $app->id }}" style="display: block; margin-left: 7rem; margin-top: -44px; color: #fff; width: 90px;">削除する</a>
+<a class="btn btn-danger" data-toggle="modal" data-target="#modal-delete-{{ $app->id }}" style="width: 90px; width: 58px; display: block; margin-left: 103px; margin-top: -43px;">削除</a>
 <!-- modal -->
 <div id="modal-delete-{{ $app->id }}" class="modal fade" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">

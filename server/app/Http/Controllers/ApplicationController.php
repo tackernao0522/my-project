@@ -77,6 +77,34 @@ class ApplicationController extends Controller
         return view('apps.app_detail', ['app' => $app]);
     }
 
+    public function showApplicationEditForm($app)
+    {
+        $app = PostApp::find($app);
+        if (auth()->user()->id != $app->user_id) {
+            return redirect(route('top'))->with('status', '権限がありません。');
+        }
+        return view('apps.edit_form', ['app' => $app]);
+    }
+
+    public function editApplication(PostAppRequest $request, PostApp $app)
+    {
+        // $app = PostApp::find($app);
+        if ($request->has('item-image')) {
+            $fileName = $this->saveImage($request->file('item-image'));
+            $app->image_file_name = $fileName;
+        }
+        // $app->image_file_name = $request->input('image_file_name');
+        $app->title = $request->input('title');
+        $app->language = $request->input('language');
+        $app->framework = $request->input('framework');
+        $app->description = $request->input('description');
+        $app->url = $request->input('url');
+        $app->save();
+
+        return redirect()->back()
+            ->with('status', '更新しました。');
+    }
+
     public function destroy(PostApp $app)
     {
         $app->delete();

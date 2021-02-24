@@ -22,6 +22,8 @@ Route::group(['middleware' => 'auth.very_basic'], function () {
         Route::get('/admin/app_index', 'AdminController@index')->name('admin.index');
         Route::get('/posts_app', 'ApplicationController@showApplicationForm')->name('posts.app');
         Route::post('/posts_app', 'ApplicationController@postApplication');
+        Route::get('/posts_app/edit/{app}', 'ApplicationController@showApplicationEditForm')->name('app.edit');
+        Route::post('posts_app/edit/{app}', 'ApplicationController@editApplication');
         Route::delete('apps/{app}', 'ApplicationController@destroy')->name('apps.destroy');
 
         Route::prefix('apps')->name('apps.')->group(function () {

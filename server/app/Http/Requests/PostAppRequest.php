@@ -24,7 +24,7 @@ class PostAppRequest extends FormRequest
     public function rules()
     {
         return [
-            'item-image' => ['required', 'file', 'image'],
+            'item-image' => ['file', 'image'],
             'title' => ['required', 'string', 'max:255'],
             'language' => ['required', 'string', 'max:255'],
             'framework' => ['max:255'],
