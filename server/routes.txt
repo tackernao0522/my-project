@@ -196,7 +196,7 @@
 |        |          |                                    |                       |                                                                        | App\Http\Middleware\VerifyCsrfToken                     |
 |        |          |                                    |                       |                                                                        | Illuminate\Routing\Middleware\SubstituteBindings        |
 |        |          |                                    |                       |                                                                        | Olssonm\VeryBasicAuth\Http\Middleware\VeryBasicAuth     |
-|        | GET|HEAD | mypage/edit-profile                | mypage.edit-profile   | App\Http\Controllers\Mypage\ProfileController@showProfileEditForm      | App\Http\Middleware\EncryptCookies                      |
+|        | GET|HEAD | mypage/edit-profile                | mypage.edit-profile   | App\Http\Controllers\MyPage\ProfileController@showProfileEditForm      | App\Http\Middleware\EncryptCookies                      |
 |        |          |                                    |                       |                                                                        | Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse |
 |        |          |                                    |                       |                                                                        | Illuminate\Session\Middleware\StartSession              |
 |        |          |                                    |                       |                                                                        | Illuminate\View\Middleware\ShareErrorsFromSession       |
@@ -204,7 +204,7 @@
 |        |          |                                    |                       |                                                                        | App\Http\Middleware\Authenticate                        |
 |        |          |                                    |                       |                                                                        | Illuminate\Routing\Middleware\SubstituteBindings        |
 |        |          |                                    |                       |                                                                        | Olssonm\VeryBasicAuth\Http\Middleware\VeryBasicAuth     |
-|        | POST     | mypage/edit-profile                |                       | App\Http\Controllers\Mypage\ProfileController@editProfile              | App\Http\Middleware\EncryptCookies                      |
+|        | POST     | mypage/edit-profile                |                       | App\Http\Controllers\MyPage\ProfileController@editProfile              | App\Http\Middleware\EncryptCookies                      |
 |        |          |                                    |                       |                                                                        | Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse |
 |        |          |                                    |                       |                                                                        | Illuminate\Session\Middleware\StartSession              |
 |        |          |                                    |                       |                                                                        | Illuminate\View\Middleware\ShareErrorsFromSession       |
