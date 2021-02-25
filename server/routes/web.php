@@ -41,7 +41,7 @@ Route::group(['middleware' => 'auth.very_basic'], function () {
         });
 
         Route::prefix('mypage')
-            ->namespace('Mypage')
+            ->namespace('MyPage')
             ->group(function () {
                 Route::get('edit-profile', 'ProfileController@showProfileEditForm')->name('mypage.edit-profile');
                 Route::post('edit-profile', 'ProfileController@editProfile');
