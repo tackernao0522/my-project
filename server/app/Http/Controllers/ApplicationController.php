@@ -88,12 +88,11 @@ class ApplicationController extends Controller
 
     public function editApplication(PostAppRequest $request, PostApp $app)
     {
-        // $app = PostApp::find($app);
         if ($request->has('item-image')) {
             $fileName = $this->saveImage($request->file('item-image'));
             $app->image_file_name = $fileName;
         }
-        // $app->image_file_name = $request->input('image_file_name');
+
         $app->title = $request->input('title');
         $app->language = $request->input('language');
         $app->framework = $request->input('framework');
