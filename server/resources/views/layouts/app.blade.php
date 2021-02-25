@@ -31,7 +31,7 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 @if(Auth::check())
-                <span class="btn btn-outline-light my-2 my-sm-0" style="margin-left: -1px; font-size: 12px; color: #fff !important;">ようこそ、 {{ Auth::user()->name }}さん</span>
+                <a href="{{ route('mypage.edit-profile') }}"><span class="btn btn-outline-light my-2 my-sm-0" style="margin-left: -1px; font-size: 12px; color: #fff !important;">ようこそ、 {{ Auth::user()->name }}さん</span></a>
                 <form method="POST" action="{{ route('logout') }}" class="form-inline my-2 my-lg-0 ml-auto" id="logout-form">
                     @csrf
                     <a href="#" id="logout" class="form-control mr-sm-2" style="width: 110px; display: block; text-align: center;">ログアウト</a>

@@ -5,7 +5,14 @@
       <h5 class="card-title">
         <a class="btn btn-info" href="{{ route('app', ['app' => $app]) }}">{{ $app->title }}</a>
       </h5>
-      <p style="margin-left: 10px;">作成者：<a href="#">{{ $app->user->name }}</a></p>
+      <p style="margin-left: 10px;">作成者：
+        @if (!empty($app->user->avatar_file_name))
+        <img src="{{ Storage::disk('s3')->url("avatars/{$app->user->avatar_file_name}") }}" class="rounded-circle" style="object-fit: cover; width: 35px; height: 35px;">
+        @else
+        <img src="/images/avatar-default.svg" class="rounded-circle" style="object-fit: cover; width: 35px; height: 35px;">
+        @endif
+        <a href="#">{{ $app->user->name }}</a>
+      </p>
       <p style="margin-left: 10px;">言語：{{ $app->language }}</p>
       <p style="margin-left: 10px;">フレームワーク：{{ $app->framework }}</p>
       <div style="margin-left: 10px; color:red;">説明：</div>

@@ -39,6 +39,13 @@ Route::group(['middleware' => 'auth.very_basic'], function () {
             Route::post('/folders/{folder}/tasks/{task}/edit', 'TaskController@edit');
             Route::delete('/folders/{folder}/tasks/{task}', 'TaskController@destroy')->name('tasks.destroy');
         });
+
+        Route::prefix('mypage')
+            ->namespace('Mypage')
+            ->group(function () {
+                Route::get('edit-profile', 'ProfileController@showProfileEditForm')->name('mypage.edit-profile');
+                Route::post('edit-profile', 'ProfileController@editProfile');
+            });
     });
 
 
