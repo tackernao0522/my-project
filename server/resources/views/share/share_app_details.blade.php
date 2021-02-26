@@ -11,7 +11,7 @@
         @else
         <img src="/images/avatar-default.svg" class="rounded-circle" style="object-fit: cover; width: 35px; height: 35px;">
         @endif
-        <a href="#">{{ $app->user->name }}</a>
+        <a href="{{ route('users.show', ['name' => $app->user->name]) }}">{{ $app->user->name }}</a>
       </p>
       <p style="margin-left: 10px;">言語：{{ $app->language }}</p>
       <p style="margin-left: 10px;">フレームワーク：{{ $app->framework }}</p>

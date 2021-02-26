@@ -9,6 +9,11 @@ Route::group(['middleware' => 'auth.very_basic'], function () {
     Route::get('/login/{provider}', 'Auth\LoginController@redirectToProvider')->where('social', 'twitter|google');
     Route::get('/login/{provider}/callback', 'Auth\LoginController@handleProviderCallback')->where('social', 'twitter|google');
 
+    // users page
+    Route::prefix('users')->name('users.')->group(function () {
+        Route::get('/{name}', 'UserController@show')->name('show');
+    });
+
     Route::group(['middleware' => 'auth'], function () {
         // todo division
         Route::get('/todo', 'HomeController@index')->name('todo');
