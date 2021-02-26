@@ -36,6 +36,13 @@ Route::group(['middleware' => 'auth.very_basic'], function () {
             Route::delete('/{app}/like', 'ApplicationController@unlike')->name('unlike');
         });
 
+        // Follow Unfollow
+        Route::prefix('users')->name('users.')->group(function () {
+            Route::put('/{name}/follow', 'UserController@follow')->name('follow');
+            Route::delete('/{name}/follow', 'UserController@unfollow')->name('unfollow');
+        });
+
+
         Route::group(['middleware' => 'can:view,folder'], function () {
             Route::get('/folders/{folder}/tasks', 'TaskController@index')->name('tasks.index');
             Route::get('/folders/{folder}/tasks/create', 'TaskController@showCreateForm')->name('tasks.create');
