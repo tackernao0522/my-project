@@ -17,10 +17,10 @@
   </div>
   <div class="card-body">
     <div class="card-text">
-      <a href="" class="text-muted">
+      <a href="{{ route('users.followings', ['name' => $user->name]) }}" class="text-muted">
         {{ $user->count_followings }} フォロー
       </a>
-      <a href="" class="text-muted">
+      <a href="{{ route('users.followers', ['name' => $user->name]) }}" class="text-muted">
         {{ $user->count_followers }} フォロワー
       </a>
       <div style="width: 70px; margin-top: 10px; margin-bottom: 5px; color:crimson; border-style: ridge; text-align: center;">自己紹介</div>
