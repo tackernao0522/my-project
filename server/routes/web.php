@@ -12,6 +12,7 @@ Route::group(['middleware' => 'auth.very_basic'], function () {
     // users page
     Route::prefix('users')->name('users.')->group(function () {
         Route::get('/{name}', 'UserController@show')->name('show');
+        Route::get('/{name}/likes', 'UserController@likes')->name('likes');
     });
 
     Route::group(['middleware' => 'auth'], function () {
@@ -31,6 +32,7 @@ Route::group(['middleware' => 'auth.very_basic'], function () {
         Route::post('posts_app/edit/{app}', 'ApplicationController@editApplication');
         Route::delete('apps/{app}', 'ApplicationController@destroy')->name('apps.destroy');
 
+        // likes
         Route::prefix('apps')->name('apps.')->group(function () {
             Route::put('/{app}/like', 'ApplicationController@like')->name('like');
             Route::delete('/{app}/like', 'ApplicationController@unlike')->name('unlike');
