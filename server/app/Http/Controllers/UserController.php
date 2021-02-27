@@ -14,9 +14,20 @@ class UserController extends Controller
 
         $postApps = $user->postApps->sortByDesc('created_at');
 
+        return view('users.show', [
+            'user' => $user,
+            'postApps' => $postApps,
+        ]);
+    }
+
+    public function likes(String $name)
+    {
+        $user = User::where('name', $name)->first();
+
+        $postApps = $user->likes->sortByDesc('created_at');
         // dd($postApps);
 
-        return view('users.show', [
+        return view('users.likes', [
             'user' => $user,
             'postApps' => $postApps,
         ]);

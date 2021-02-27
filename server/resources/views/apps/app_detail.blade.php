@@ -7,7 +7,7 @@
 @section('content')
 <div class="container-sm">
   <div class="text-center mt-4">
-    <span style="height: 100px; font-size: 20px; color: red !important; border-style: ridge; padding: 5px;">{{ $app->user->name }}さんの{{ $app->title }}</span>
+    <span style="height: 100px; font-size: 20px; color: red !important; border-style: ridge; padding: 5px;">{{ $app->title }}</span>
   </div>
   <div class="row">
     <div class="card-group mt-4 mb-3 mx-auto">
