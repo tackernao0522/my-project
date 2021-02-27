@@ -14,7 +14,9 @@
         <a href="{{ route('users.show', ['name' => $app->user->name]) }}">{{ $app->user->name }}</a>
       </p>
       <p style="margin-left: 10px;">言語：{{ $app->language }}</p>
+      @if (!empty($app->framework))
       <p style="margin-left: 10px;">フレームワーク：{{ $app->framework }}</p>
+      @endif
       <div style="margin-left: 10px; color:red;">説明：</div>
       <p style="margin-left: 10px;">{!! nl2br(e(Str::limit($app->description, 50))) !!}</p>
       <div class="card-body pt-0 pb-2 pl-3">

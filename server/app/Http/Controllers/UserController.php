@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\PostApp;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -11,8 +12,13 @@ class UserController extends Controller
     {
         $user = User::where('name', $name)->first();
 
+        $postApps = $user->postApps->sortByDesc('created_at');
+
+        // dd($postApps);
+
         return view('users.show', [
             'user' => $user,
+            'postApps' => $postApps,
         ]);
     }
 
