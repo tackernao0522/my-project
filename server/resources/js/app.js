@@ -3,12 +3,14 @@ require('./bootstrap');
 import Vue from 'vue'
 import ItemLike from './components/ItemLike'
 import FollowButton from './components/FollowButton'
+import PostAppTagsInput from './components/PostAppTagsInput'
 
 const item = new Vue({
   el: '#item',
   components: {
     ItemLike,
     FollowButton,
+    PostAppTagsInput,
   }
 })
 

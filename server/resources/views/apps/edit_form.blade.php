@@ -46,6 +46,15 @@
           @enderror
         </div>
 
+        {{-- タグ --}}
+        <div class="form-group mt-3">
+        <label>タグ</label>
+          <post-app-tags-input
+            :initial-tags='@json($tagNames ?? [])'
+          >
+          </post-app-tags-input>
+        </div>
+
         {{-- 言語 --}}
         <div class="form-group mt-3">
           <label for="language">言語</label>
