@@ -23,7 +23,11 @@ class ApplicationController extends Controller
 
     public function showApplicationForm()
     {
-        return view('members.app_form');
+        $allTagNames = Tag::all()->map(function($tag) {
+            return ['text' => $tag->name];
+        });
+
+        return view('members.app_form', ['allTagNames' => $allTagNames]);
     }
 
     public function postApplication(PostAppRequest $request, PostApp $app)
@@ -90,12 +94,17 @@ class ApplicationController extends Controller
             return ['text' => $tag->name];
         });
 
+        $allTagNames = Tag::all()->map(function($tag) {
+            return ['text' => $tag->name];
+        });
+
         if (auth()->user()->id != $app->user_id) {
             return redirect(route('top'))->with('status', '権限がありません。');
         }
         return view('apps.edit_form', [
             'app' => $app,
             'tagNames' => $tagNames,
+            'allTagNames' => $allTagNames,
         ]);
     }
 
