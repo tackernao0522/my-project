@@ -17,6 +17,8 @@ Route::group(['middleware' => 'auth.very_basic'], function () {
         Route::get('/{name}/followers', 'UserController@followers')->name('followers');
     });
 
+    Route::get('/tags/{name}', 'TagController@show')->name('tags.show');
+
     Route::group(['middleware' => 'auth'], function () {
         // todo division
         Route::get('/todo', 'HomeController@index')->name('todo');
