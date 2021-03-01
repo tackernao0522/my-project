@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\PostAppRequest;
+use Illuminate\Support\Facades\Auth;
 use App\Models\PostApp;
+use App\Models\Tag;
 use Illuminate\Http\File;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
@@ -24,7 +26,7 @@ class ApplicationController extends Controller
         return view('members.app_form');
     }
 
-    public function postApplication(PostAppRequest $request)
+    public function postApplication(PostAppRequest $request, PostApp $app)
     {
         $imageName = $this->saveImage($request->file('item-image'));
 
@@ -37,6 +39,11 @@ class ApplicationController extends Controller
         $app->user_id = $request->user()->id;
         $app->url = $request->input('url');
         $app->save();
+
+        $request->tags->each(function ($tagName) use ($app) {
+            $tag = Tag::firstOrCreate(['name' => $tagName]);
+            $app->tags()->attach($tag);
+        });
 
         return redirect()->back()
             ->with('status', 'アプリを投稿しました。');
@@ -77,13 +84,19 @@ class ApplicationController extends Controller
         return view('apps.app_detail', ['app' => $app]);
     }
 
-    public function showApplicationEditForm($app)
+    public function showApplicationEditForm(PostApp $app)
     {
-        $app = PostApp::find($app);
+        $tagNames = $app->tags->map(function ($tag) {
+            return ['text' => $tag->name];
+        });
+
         if (auth()->user()->id != $app->user_id) {
             return redirect(route('top'))->with('status', '権限がありません。');
         }
-        return view('apps.edit_form', ['app' => $app]);
+        return view('apps.edit_form', [
+            'app' => $app,
+            'tagNames' => $tagNames,
+        ]);
     }
 
     public function editApplication(PostAppRequest $request, PostApp $app)
@@ -99,6 +112,12 @@ class ApplicationController extends Controller
         $app->description = $request->input('description');
         $app->url = $request->input('url');
         $app->save();
+
+        $app->tags()->detach();
+        $request->tags->each(function ($tagName) use ($app) {
+            $tag = Tag::firstOrCreate(['name' => $tagName]);
+            $app->tags()->attach($tag);
+        });
 
         return redirect()->back()
             ->with('status', '更新しました。');

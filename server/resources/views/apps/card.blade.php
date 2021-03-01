@@ -68,6 +68,19 @@
     <h3 class="h4 card-title mt-2" style="margin-left: -4px; color:crimson;">
       {{ $postApp->title }}
     </h3>
+    @foreach($postApp->tags as $tag)
+    @if($loop->first)
+    <div class="card-body pt-0 pb-4" style="margin-left: -25px;">
+      <div class="card-text line-height">
+        @endif
+        <a href="" class="border p-1 mr-1 mt-1 text-muted">
+          {{ $tag->name }}
+        </a>
+        @if($loop->last)
+      </div>
+    </div>
+    @endif
+    @endforeach
     <div class="card-text" style="font-size: 15px; margin-left: -4px;">
       {!! nl2br(e( $postApp->description )) !!}
     </div>
