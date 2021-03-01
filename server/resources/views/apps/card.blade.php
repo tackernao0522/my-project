@@ -73,8 +73,8 @@
     <div class="card-body pt-0 pb-4" style="margin-left: -25px;">
       <div class="card-text line-height">
         @endif
-        <a href="" class="border p-1 mr-1 mt-1 text-muted">
-          {{ $tag->name }}
+        <a href="" class="border p-1 mr-1 mt-1 text-muted" style="display: inline-block;">
+          {{ $tag->hashtag }}
         </a>
         @if($loop->last)
       </div>

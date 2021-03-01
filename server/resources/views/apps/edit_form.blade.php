@@ -51,6 +51,7 @@
         <label>タグ</label>
           <post-app-tags-input
             :initial-tags='@json($tagNames ?? [])'
+            :autocomplete-items='@json($allTagNames ?? [])'
           >
           </post-app-tags-input>
         </div>
