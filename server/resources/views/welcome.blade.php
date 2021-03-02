@@ -24,4 +24,7 @@
 @endforeach
 </div>
 </div>
+<div class="d-flex justify-content-center">
+    {{ $apps->withQueryString()->links() }}
+</div>
 @endsection
