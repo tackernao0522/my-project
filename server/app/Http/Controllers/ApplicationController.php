@@ -14,16 +14,42 @@ use Intervention\Image\Facades\Image;
 
 class ApplicationController extends Controller
 {
-    public function showApplications()
+    public function showApplications(Request $request)
     {
-        $apps = PostApp::all();
+        $query = PostApp::query();
 
-        return view('welcome')->with('apps', $apps);
+        if ($request->filled('keyword')) {
+            $keyword = '%' . $this->escape($request->input('keyword')) . '%';
+            $query->where(function ($query) use ($keyword) {
+                $query->where('title', 'LIKE', $keyword);
+                $query->orWhere('language', 'LIKE', $keyword);
+                $query->orWhere('framework', 'LIKE', $keyword);
+                $query->orWhere('description', 'LIKE', $keyword);
+                $query->orWhereHas('tags', function ($query) use ($keyword) {
+                    $query->where('name', 'LIKE', $keyword);
+                });
+                $query->orWhereHas('user', function ($query) use ($keyword) {
+                    $query->where('name', 'LIKE', $keyword);
+                    $query->orWhere('body', 'LIKE', $keyword);
+                });
+            });
+        }
+
+
+        $defaults = [
+            'keyword' => $request->input('keyword'),
+        ];
+
+        $apps = $query->orderBy('id')->paginate(6);
+
+        return view('welcome')
+            ->with('apps', $apps)
+            ->with('defaults', $defaults);
     }
 
     public function showApplicationForm()
     {
-        $allTagNames = Tag::all()->map(function($tag) {
+        $allTagNames = Tag::all()->map(function ($tag) {
             return ['text' => $tag->name];
         });
 
@@ -94,7 +120,7 @@ class ApplicationController extends Controller
             return ['text' => $tag->name];
         });
 
-        $allTagNames = Tag::all()->map(function($tag) {
+        $allTagNames = Tag::all()->map(function ($tag) {
             return ['text' => $tag->name];
         });
 
@@ -158,5 +184,14 @@ class ApplicationController extends Controller
             'id' => $app->id,
             'countLikes' => $app->count_likes,
         ];
+    }
+
+    private function escape(string $value)
+    {
+        return str_replace(
+            ['\\', '%', '_'],
+            ['\\\\', '\\%', '\\_'],
+            $value
+        );
     }
 }
