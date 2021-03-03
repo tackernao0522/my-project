@@ -12,7 +12,7 @@
   @include('users.user')
   @include('users.tabs', ['hasPostApps' => false, 'hasLikes' => true])
   @foreach($postApps as $postApp)
-    @include('apps.card')
+  @include('apps.card')
   @endforeach
 </div>
 @endsection
