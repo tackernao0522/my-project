@@ -23,7 +23,7 @@
 
 <body>
     <main id="item">
-        <nav class="navbar navbar-expand-lg navbar-light bg-info">
+        <nav class="navbar navbar-expand-lg navbar-light bg-info" style="position: sticky; top: 0; z-index: 1;">
             <a class="navbar-brand" href="/">アプリ一覧</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -31,7 +31,7 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <form class="d-flex" mthod="GET" action="{{ route('top') }}">
-                    <input class="form-control me-2" type="text" name="keyword" placeholder="キーワード検索" aria-label="Text input with dropdown button" value="{{ $defaults['keyword'] ?? '' }}" style="margin-top: 6px; height: 44px; width: 162px;">
+                    <input class="form-control me-2" type="text" name="keyword" placeholder="キーワード検索" aria-label="Text input with dropdown button" value="{{ $defaults['keyword'] ?? '' }}" style="margin-top: 6px; height: 44px; width: 156px;">
                     <button class="btn btn-success" type="submit" style="width: 86px; height: 45px; margin-left: 8px; line-height: 10px; font-size: 12px; color: #fff;">検索</button>
                 </form>
                 @if(Auth::check())
