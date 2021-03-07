@@ -40,7 +40,7 @@ class ApplicationController extends Controller
             'keyword' => $request->input('keyword'),
         ];
 
-        $apps = $query->orderBy('id')->paginate(6);
+        $apps = $query->with(['user', 'likes', 'tags'])->paginate(6);
 
         return view('welcome')
             ->with('apps', $apps)
