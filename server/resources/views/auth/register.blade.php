@@ -46,7 +46,7 @@
                     <div class="social-login" style="margin-top: 10px;">
                         <span class="social-label">Or signin with</span>
                         <ul class="socials">
-                            <li><a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
+                            <li><a href="{{ url('login/facebook')}}"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
                             <li><a href="{{ url('login/twitter')}}"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
                             <li><a href="{{ url('login/google')}}"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
                         </ul>
