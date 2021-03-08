@@ -18,7 +18,7 @@ class AdminController extends Controller
 
     public function index()
     {
-        $apps = PostApp::all();
+        $apps = PostApp::orderBy('id')->with(['user', 'likes', 'tags'])->paginate(6);
 
         return view('admin.app_index')->with('apps', $apps);
     }
