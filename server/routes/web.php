@@ -48,6 +48,9 @@ Route::group(['middleware' => 'auth.very_basic'], function () {
             Route::delete('/{name}/follow', 'UserController@unfollow')->name('unfollow');
         });
 
+        // Comments
+        Route::resource('/comments', 'CommentController')->only(['store']);
+
 
         Route::group(['middleware' => 'can:view,folder'], function () {
             Route::get('/folders/{folder}/tasks', 'TaskController@index')->name('tasks.index');
