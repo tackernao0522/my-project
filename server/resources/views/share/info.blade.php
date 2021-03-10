@@ -25,6 +25,10 @@
     <div class="card-text mt-3" style="margin-left: -22px;">
       <item-like :initial-is-liked-by='@json($postApp->isLikedBy(Auth::user()))' :initial-count-likes='@json($postApp->count_likes)' :authorized='@json(Auth::check())' endpoint="{{ route('apps.like', [$postApp->id]) }}">
       </item-like>
+      <div class="d-flex align-items-center" style="margin-left: 60px; margin-top: -32px;">
+        <a class="in-link p-1" href="{{ route('app', [$postApp->id]) }}"><i class="far fa-comment fa-fw fa-lg"></i></a>
+        <p class="mb-0">{{ count($postApp->comments) }}</p>
+      </div>
     </div>
   </div>
   <div style="margin-left: -10px;">

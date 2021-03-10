@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 use App\Http\Requests\PostAppRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Models\PostApp;
+use App\Models\Comment;
+use App\Models\User;
 use App\Models\Tag;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\File;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
@@ -109,9 +112,18 @@ class ApplicationController extends Controller
         return $meta["uri"];
     }
 
-    public function showAppDetail(PostApp $app)
+    public function showAppDetail(PostApp $app, Comment $comment)
     {
-        return view('apps.app_detail', ['app' => $app]);
+        $user = Auth::user();
+        $comments = $app->comments()
+            ->orderBy('created_at', 'desc')
+            ->paginate(5);
+
+        return view('apps.app_detail', [
+            'app' => $app,
+            'user' => $user,
+            'comments' => $comments,
+        ]);
     }
 
     public function showApplicationEditForm(PostApp $app)

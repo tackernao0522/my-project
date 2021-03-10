@@ -24,7 +24,12 @@
         <div class="card-text">
           <item-like :initial-is-liked-by='@json($app->isLikedBy(Auth::user()))' :initial-count-likes='@json($app->count_likes)' :authorized='@json(Auth::check())' endpoint="{{ route('apps.like', ['app' => $app]) }}">
           </item-like>
+          <div class="d-flex align-items-center" style="margin-left: 60px; margin-top: -32px;">
+            <a class="in-link p-1" href="{{ route('app', ['app' => $app]) }}"><i class="far fa-comment fa-fw fa-lg"></i></a>
+            <p class="mb-0">{{ count($app->comments) }}</p>
+          </div>
         </div>
+        <!-- コメントアイコン -->
       </div>
       <a class="btn btn-primary" href="{{ $app->url }}" style="width: 90px; display: block;">使用する</a>
       @if( Auth::id() === $app->user_id )
