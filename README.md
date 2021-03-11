@@ -1,2 +1,5 @@
 # Webアプリ投稿サイト
-[![Image from Gyazo](https://i.gyazo.com/27f1824ce9a5de060f56251c60f7ab5c.png)](https://gyazo.com/27f1824ce9a5de060f56251c60f7ab5c)
+
+## ER図
+
+![スクリーンショット 2021-03-11 15 55 17](https://user-images.githubusercontent.com/53789796/110751361-19cd1a80-8287-11eb-9272-b530b8e7d0ac.png)
