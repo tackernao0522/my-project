@@ -29,9 +29,10 @@
             <p class="mb-0">{{ count($app->comments) }}</p>
           </div>
         </div>
-        <!-- コメントアイコン -->
       </div>
+      @auth
       <a class="btn btn-primary" href="{{ $app->url }}" style="width: 90px; display: block;">使用する</a>
+      @endauth
       @if( Auth::id() === $app->user_id )
       <a class="btn btn-success" href="{{ route('app.edit', ['app' => $app]) }}" style="width: 58px; height: 36px; display: block; margin-left: 169px; margin-top: -43px;">編集</a>
       @endif
