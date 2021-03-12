@@ -31,7 +31,9 @@
       </div>
     </div>
   </div>
+  @auth
   <div style="margin-left: -10px;">
     <a class="btn btn-primary" href="{{ $postApp->url }}">使用する</a>
   </div>
+  @endauth
 </div>
